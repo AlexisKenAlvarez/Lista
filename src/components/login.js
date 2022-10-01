@@ -77,7 +77,7 @@ const Login = () => {
             setpValid(false)
         }
 
-        Axios.get(`${process.env.REACT_APP_BASEURL}/login`).then((response) => {
+        Axios.get("https://lista-api.vercel.app/login").then((response) => {
             if (response.data.loggedIn) {
               navigate("/home", {replace: true})
             }
