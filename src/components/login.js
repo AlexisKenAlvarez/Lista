@@ -111,7 +111,7 @@ const Login = () => {
     const handleLogin = () => {
         if(!debounce) {
             setDebounce(true)
-            Axios.post(`${process.env.REACT_APP_BASEURL}/login`, {email: userEmail.value, password: userPass.value}).then((response) => {
+            Axios.post("https://lista-api.vercel.app/login", {email: userEmail.value, password: userPass.value}).then((response) => {
                 if (response.data.valid === false) {
                     setError(response.data.message)
                     setPop(true)
