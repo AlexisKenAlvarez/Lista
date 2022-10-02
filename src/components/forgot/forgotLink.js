@@ -44,7 +44,10 @@ const ForgotLink = () => {
             })
         }
         verifyToken()
-        sequence()
+        setTimeout(() => {
+            sequence()
+            
+        }, 500);
 
         return () => {
             dispatch(setSuccess({value: false}))
