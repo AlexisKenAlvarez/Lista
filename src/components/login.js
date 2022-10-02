@@ -77,7 +77,7 @@ const Login = () => {
             setpValid(false)
         }
 
-        Axios.get("https://lista-api.vercel.app/login").then((response) => {
+        Axios.get(`${process.env.REACT_APP_BASEURL}/login`).then((response) => {
             if (response.data.loggedIn) {
               navigate("/home", {replace: true})
             }
@@ -111,7 +111,7 @@ const Login = () => {
     const handleLogin = () => {
         if(!debounce) {
             setDebounce(true)
-            Axios.post("https://lista-api.vercel.app/login", {email: userEmail.value, password: userPass.value}).then((response) => {
+            Axios.post(`${process.env.REACT_APP_BASEURL}/login`, {email: userEmail.value, password: userPass.value}).then((response) => {
                 if (response.data.valid === false) {
                     setError(response.data.message)
                     setPop(true)
