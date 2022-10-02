@@ -10,13 +10,14 @@ import { setSuccess } from '../../features/forgot';
 import ValidContent from './validContent'
 import Axios from 'axios';
 import Redirect from './redirect';
+import TypeVerify from '../typeverify';
 
 
 const ForgotLink = () => {
 
     Axios.defaults.withCredentials = true
     const animation = useAnimation()
-    const [validUrl, setValid] = useState(false)
+    const [validUrl, setValid] = useState("none")
     const dispatch = useDispatch()
     const param = useParams()
 
@@ -83,7 +84,9 @@ const ForgotLink = () => {
     return (
         <>
             <div className='bg-blackBg w-full h-screen flex justify-center items-center'>
-                {validUrl ? forgot.value ? <Redirect/> : <ValidContent/> : invalidContent}
+                {validUrl === "none" ? <TypeVerify/> : 
+                validUrl === "true" ? forgot.value ? <Redirect/> : <ValidContent/> : 
+                validUrl === "false" ? invalidContent : null}
             </div>  
         </>
         

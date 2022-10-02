@@ -6,10 +6,11 @@ import { AnimatePresence, motion, useAnimation } from 'framer-motion';
 
 
 import Arrow from '../images/right-arrow-svgrepo-com.svg'
+import TypeVerify from './typeverify';
 
 const Verified = () => {
     const navigate = useNavigate()
-    const [validUrl, setValidUrl] = useState(false)
+    const [validUrl, setValidUrl] = useState("none")
     const param = useParams()
     const animation = useAnimation()
 
@@ -25,12 +26,12 @@ const Verified = () => {
                 const url = `${process.env.REACT_APP_BASEURL}/${param.id}/verify/${param.token}`
                 await Axios.get(url).then((response) => {
                     console.log(response)
-                    setValidUrl(true)
+                    setValidUrl("true")
 
                 })
             } catch (error) {
                 console.log(error)
-                setValidUrl(false)
+                setValidUrl("false")
             }
         }
         verifyEmail()
@@ -82,8 +83,9 @@ const Verified = () => {
   return (
     <>
         <section className='h-screen w-full bg-blackBg flex justify-center items-center'>
-            {validUrl ? validContent : invalidContent}
-
+            {validUrl === "none" ? <TypeVerify/> : 
+            validUrl === "true" ? validContent : 
+            validUrl === "false" ? invalidContent : null}
         </section>
     </>
   )
