@@ -36,10 +36,10 @@ const ForgotLink = () => {
             Axios.get(`${process.env.REACT_APP_BASEURL}/${param.id}/checkValid/${param.token}`).then((response) => {
                 try {
                     console.log(response)
-                    setValid(true)
+                    setValid("true")
                 } catch (error) {
                     console.log(error)
-                    setValid(false)
+                    setValid("false")
                 }
             })
         }
