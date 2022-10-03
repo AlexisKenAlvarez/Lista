@@ -9,6 +9,7 @@ import '../scss/login.scss'
 // IMAGE
 import Eye from '../images/showpass.svg'
 import Error from '../images/error.svg'
+import Background from '../images/background3.png'
 
 import { setUserEmail, setUserPassword } from '../features/loginSlice'
 
@@ -150,7 +151,7 @@ const Login = () => {
 
     return (
         <>
-            <section className="bg-gradient bg-cover mx-auto h-screen">
+            <section className="bg-cover mx-auto h-screen" style={{backgroundImage: `url(${Background})`}}>
                 <nav className="w-full h-20 flex justify-end items-center">
                     <div className='signup-button h-full w-72 flex items-center text-grey-text font-space mr-10 justify-around uppercase'>
                         <p className="text-sm">Not a member?</p>
@@ -160,7 +161,7 @@ const Login = () => {
 
                 <div className='h-3/5 mx-auto w-100 flex justify-center items-center'>
                     <div className="w-min h-auto">
-                        <img src="https://unix-shop.s3.ap-southeast-1.amazonaws.com/lista/listalogo-2.webp" alt="Logo" className="w-48 mx-auto mt-10 font-space md:w-56"></img>
+                        <img src="https://ik.imagekit.io/efpqj5mis/listalogo-2_PN1de18jw.webp?ik-sdk-version=javascript-1.4.3&updatedAt=1664767117196" alt="Logo" className="w-48 mx-auto mt-10 font-space md:w-56"></img>
 
                         <div className='mx-auto h-auto w-64 md:w-72 relative'>
                             <div>

@@ -12,6 +12,7 @@ import ThirdPage from './page3reg'
 
 // Images
 import Error from '../images/error.svg'
+import Background from '../images/background3.png'
 
 // SLICES
 import { setPage, setValidEmail, setValidUser, setUserPassword, setConfirmPass, setUsername, setUserEmail } from '../features/registerSlice'
@@ -167,7 +168,7 @@ const Register = () => {
 
     return (
         <>
-            <section className="bg-gradient bg-cover mx-auto h-screen">
+            <section className="bg-cover mx-auto h-screen" style={{backgroundImage: `url(${Background})`}}>
                 <nav className="w-full h-20 flex justify-end items-center">
                     <div className='h-full w-72 flex items-center text-grey-text font-space mr-10 justify-around uppercase'>
                         <p className="text-sm">Existing user?</p>
@@ -177,7 +178,7 @@ const Register = () => {
 
                 <div className='h-[60%] mx-auto w-100 flex justify-center items-center mt-9'>
                     <div className="w-min h-auto">
-                        <img src="https://unix-shop.s3.ap-southeast-1.amazonaws.com/lista/listalogo-2.webp" alt="Logo" className="w-48 mx-auto mt-6 font-space md:w-56"></img>
+                        <img src="https://ik.imagekit.io/efpqj5mis/listalogo-2_PN1de18jw.webp?ik-sdk-version=javascript-1.4.3&updatedAt=1664767117196" alt="Logo" className="w-48 mx-auto mt-6 font-space md:w-56"></img>
 
                         <div className='mx-auto w-64 h-auto flex items-center justify-between mt-4'>
                             <div className='w-10 h-10 bg-white flex justify-center items-center rounded-full font-space font-bold text-purple text-lg'>1</div>

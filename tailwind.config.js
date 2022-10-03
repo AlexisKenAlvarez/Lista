@@ -6,8 +6,8 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'gradient': "url('https://unix-shop.s3.ap-southeast-1.amazonaws.com/lista/background3.png')",
-        'logo': "url('https://unix-shop.s3.ap-southeast-1.amazonaws.com/lista/listalogo-2.webp')"
+        'gradient': "url('https://pledisto.sirv.com/Todo/background3.png')",
+        'logo': "url('https://ik.imagekit.io/efpqj5mis/listalogo-2_PN1de18jw.webp?ik-sdk-version=javascript-1.4.3&updatedAt=1664767117196')"
       },
 
       fontFamily: {
