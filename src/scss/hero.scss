@@ -1,0 +1,85 @@
+body, html {
+    min-width: fit-content !important;
+}
+
+.hero-wrapper {
+    display: grid;
+    grid-template-columns: 18rem 1fr;
+    grid-template-rows: 7rem 1fr;
+    grid-template-areas: 
+    "upper upper"
+    "main main";
+
+    @media screen and (min-width: 1024px) {
+        grid-template-areas: 
+        "leftarea upper"
+        "leftarea main";
+    }
+
+    .navbar-up {
+        grid-area: upper;
+    }
+
+    .navbar-left {
+        grid-area: leftarea;
+
+    }
+
+    .main-section {
+        grid-area: main;
+    }
+}
+
+img {
+    -webkit-tap-highlight-color: transparent;
+}
+
+// PARENT
+.newtask-button {
+    transition: 0.2s all ease-in-out;
+    transform-style: preserve-3d; /* This is important */
+}
+
+
+.newtask-button:before{
+    content: "";
+    position: absolute;
+    background: linear-gradient(75.2deg, #C344D7 34.89%, #E492C2 78.63%, #FFD0B1 116.92%);
+    opacity: 0.5;
+    width: 90%;
+    padding: 0;
+    margin-inline: auto;
+    left: 0;
+    right: 0;
+    transition: 0.2s ease-in-out;
+    height: 100%;
+    transform:translateZ(-1px); /* this will do the magic */
+
+}
+
+.newtask-button:after{
+    content: "";
+    position: absolute;
+    opacity: 0.2;
+    background: linear-gradient(75.2deg, #C344D7 34.89%, #E492C2 78.63%, #FFD0B1 116.92%);
+    width: 80%;
+    padding: 0;
+    margin-inline: auto;
+    left: 0;
+    right: 0;
+    transition: 0.2s ease-in-out;
+    height: 100%;
+    transform:translateZ(-1px); /* this will do the magic */
+}
+
+.newtask-button:hover {
+    transform: translateY(-12px);
+}
+
+.newtask-button:hover:before {
+    transform: translateY(6px);
+}
+
+.newtask-button:hover:after {
+    transform: translateY(12px);
+}

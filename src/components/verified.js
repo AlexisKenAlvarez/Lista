@@ -72,7 +72,7 @@ const Verified = () => {
         <>
             <div className='flex flex-col mx-auto w-full justify-center items-center'>
 
-                <motion.img initial={{opacity: 0}} animate={animation} src="https://unix-shop.s3.ap-southeast-1.amazonaws.com/ghost.webp" alt="GHOST" className='w-40'></motion.img>
+                <motion.img initial={{opacity: 0}} animate={animation} src="https://ik.imagekit.io/efpqj5mis/ghost_M--ao8Eaw.webp?ik-sdk-version=javascript-1.4.3&updatedAt=1665117864130" alt="GHOST" className='w-40'></motion.img>
                 <p className='text-white font-space text-md w-[80%] block text-center mt-6'>404 Not found. Link expired</p>
                 <div className='px-20 py-4 border border-fake mt-7 text-white font-space cursor-pointer select-none hover:bg-fake hover:text-blackBg hover:font-bold transition-all ease-in-out' onClick={handleLogin}>
                     GO BACK

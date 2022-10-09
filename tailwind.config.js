@@ -21,7 +21,15 @@ module.exports = {
         'fake': '#B5B4D5',
         'fake2': '#7374a9',
         'barney': '#8323CF',
-        'blackBg': '#1D1D26'
+        'blackBg': '#1D1D26',
+        'side': '#191921',
+        'purpletrans': 'rgba(127, 17, 224, 0.54)',
+        'gradient': 'linear-gradient(75.2deg, #C344D7 34.89%, #E492C2 78.63%, #FFD0B1 116.92%)'
+        
+      },
+      
+      screens: {
+        'navhalf': '555px'
       }
     },
 
