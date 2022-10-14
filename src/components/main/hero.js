@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 
 // STYLE
@@ -9,12 +10,17 @@ import '../../scss/hero.scss'
 // COMPONENTS
 import NavItems from './NavItems'
 import NavbarUp from './NavbarUp'
+import Dashboard from './Dashboard/Dashboard'
+import NewTask from './New/NewTask'
+import Logo from './Logo'
 
 
 const Hero = () => {
   const [log, setLog] = useState(false)
   const navigate = useNavigate()
   Axios.defaults.withCredentials = true
+
+  const page = useSelector((state) => state.handlePage.page)
 
 
   useEffect(() => {
@@ -27,6 +33,7 @@ const Hero = () => {
 
       }
     })
+
   }, [])
 
   if (!log) {
@@ -42,7 +49,7 @@ const Hero = () => {
         <div className='navbar-left bg-side hidden lg:block'>
 
           <div className='nav-container w-full h-auto mx-auto'>
-            <img src="https://ik.imagekit.io/efpqj5mis/listalogo-2_PN1de18jw.webp?ik-sdk-version=javascript-1.4.3&updatedAt=1664767117196" alt="Logo" className="mx-auto mt-10 font-space w-44 select-none"></img>
+            <Logo/>
             <div className='w-full h-auto mx-auto mt-10 p-0'>
               <ul className='text-white flex flex-col justify-center w-full p-0'>
 
@@ -55,7 +62,12 @@ const Hero = () => {
             </div>
           </div>
         </div>
-        <div className='main-section'>
+        <div className='main-section relative'>
+          <img src="https://ik.imagekit.io/efpqj5mis/LISTA/circle_nuBCc1KxT.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1665325432264" alt="Ellipse" className='absolute right-0 top-10 xl:top-28 hidden md:block md:w-24 pointer-events-none'></img>
+
+          {page.value === "dashboard" ? <Dashboard/> : 
+          page.value === "newtask" ? <NewTask/> : null}
+          
 
         </div>
       </section>

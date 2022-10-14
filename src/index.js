@@ -11,12 +11,14 @@ import './index.css'
 import Register from './features/registerSlice'
 import loginSlice from './features/loginSlice';
 import ForgotSlice from './features/forgot';
+import handlePage from './features/heroPage';
 
 export const store = configureStore({
   reducer: {
     Register: Register,
     Login: loginSlice,
-    Forgot: ForgotSlice
+    Forgot: ForgotSlice,
+    handlePage: handlePage
   },
   middleware: (getDefaultMiddleware) =>
   getDefaultMiddleware({

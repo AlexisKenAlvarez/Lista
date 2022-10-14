@@ -11,7 +11,8 @@ module.exports = {
       },
 
       fontFamily: {
-        'space': ['Space Grotesk']
+        'space': ['Space Grotesk'],
+        'poppins': ['Poppins']
       },
 
       colors: {
@@ -22,9 +23,13 @@ module.exports = {
         'fake2': '#7374a9',
         'barney': '#8323CF',
         'blackBg': '#1D1D26',
+        'herobg': '#15151C',
         'side': '#191921',
         'purpletrans': 'rgba(127, 17, 224, 0.54)',
-        'gradient': 'linear-gradient(75.2deg, #C344D7 34.89%, #E492C2 78.63%, #FFD0B1 116.92%)'
+        'gradient': 'linear-gradient(75.2deg, #C344D7 34.89%, #E492C2 78.63%, #FFD0B1 116.92%)',
+        'dashpink': "#FC76A1",
+        'dashblue': "#70C4BF",
+        'dashpurple': "#AE68E6"
         
       },
       

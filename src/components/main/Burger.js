@@ -24,7 +24,7 @@ const Burger = () => {
             <div className='absolute top-0 left-0 h-screen w-full navhalf:w-[14rem] lg:hidden transition-all ease-in-out bg-purpletrans'
             style={navActive ? {transform: "translateX(0%)"} : {transform: "translateX(-100%)", transitionDelay: "500ms"}}></div>
 
-            <nav className='side-menu absolute top-0 left-0 h-screen w-full bg-[#1D1D26] navhalf:w-[14rem] lg:hidden transition-all ease-in-out delay-75 duration-500'
+            <nav className='side-menu absolute top-0 left-0 h-screen w-full bg-[#1D1D26] navhalf:w-[14rem] lg:hidden transition-all ease-in-out delay-75 duration-500 z-50'
             style={navActive ? {transform: "translateX(0%)"} : {transform: "translateX(-100%)"}}>
                 <div className='sidenav-items ml-10 h-auto mt-10'>
                     <img src={BackButton} alt="BackButton" className='cursor-pointer select-none' onClick={toggleNav}></img>
