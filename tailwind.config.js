@@ -7,7 +7,8 @@ module.exports = {
     extend: {
       backgroundImage: {
         'gradient': "url('https://pledisto.sirv.com/Todo/background3.png')",
-        'logo': "url('https://ik.imagekit.io/efpqj5mis/listalogo-2_PN1de18jw.webp?ik-sdk-version=javascript-1.4.3&updatedAt=1664767117196')"
+        'logo': "url('https://ik.imagekit.io/efpqj5mis/listalogo-2_PN1de18jw.webp?ik-sdk-version=javascript-1.4.3&updatedAt=1664767117196')",
+        'taskbg': 'https://ik.imagekit.io/efpqj5mis/LISTA/newtask_bg_SnnlI6l8G.png?ik-sdk-version=javascript-1.4.3&updatedAt=1666358587168'
       },
 
       fontFamily: {

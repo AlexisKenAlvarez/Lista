@@ -8,6 +8,7 @@ import Verified from './components/verified';
 import Forgot from './components/forgot/forgotpass';
 import ForgotLink from './components/forgot/forgotLink';
 import Hero from './components/main/hero';
+import Loader from './components/loader/Loader';
 
 function App() {
   return (

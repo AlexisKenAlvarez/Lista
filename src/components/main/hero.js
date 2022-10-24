@@ -18,6 +18,7 @@ import Logo from './Logo'
 const Hero = () => {
   const [log, setLog] = useState(false)
   const navigate = useNavigate()
+
   Axios.defaults.withCredentials = true
 
   const page = useSelector((state) => state.handlePage.page)
@@ -35,6 +36,7 @@ const Hero = () => {
     })
 
   }, [])
+  
 
   if (!log) {
     return <h1>Temporary Loading Screen...</h1>
@@ -63,7 +65,7 @@ const Hero = () => {
           </div>
         </div>
         <div className='main-section relative'>
-          <img src="https://ik.imagekit.io/efpqj5mis/LISTA/circle_nuBCc1KxT.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1665325432264" alt="Ellipse" className='absolute right-0 top-10 xl:top-28 hidden md:block md:w-24 pointer-events-none'></img>
+          
 
           {page.value === "dashboard" ? <Dashboard/> : 
           page.value === "newtask" ? <NewTask/> : null}

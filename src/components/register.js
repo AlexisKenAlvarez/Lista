@@ -60,6 +60,7 @@ const Register = () => {
     }, [])
 
     useEffect(() => {
+        document.addEventListener("keydown", getKey, true)
         setTimeout(() => {
           setPop(false)
         }, 1000);
@@ -164,6 +165,11 @@ const Register = () => {
         navigate("/", {replace: true})
     }
 
+    const getKey = (e) => {
+        if (e.key === "Enter") {
+            handleNext()
+        }
+    }
 
 
     return (

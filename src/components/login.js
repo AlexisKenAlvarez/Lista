@@ -6,12 +6,16 @@ import Axios from 'axios'
 
 import '../scss/login.scss'
 
+// SLICES
+import { setUserEmail, setUserPassword } from '../features/loginSlice'
+
 // IMAGE
 import Eye from '../images/showpass.svg'
 import Error from '../images/error.svg'
 import Background from '../images/background3.png'
 
-import { setUserEmail, setUserPassword } from '../features/loginSlice'
+// COMPONENTS
+import Loader from './loader/Loader'
 
 
 const Login = () => {
@@ -32,6 +36,8 @@ const Login = () => {
 
     const [error, setError] = useState("")
     const [pop, setPop] = useState(true)
+
+    const [loaded, setLoaded] = useState(false)
 
     const togglePassword = () => {
         toggleShow(!showPassword)
@@ -66,6 +72,9 @@ const Login = () => {
     }
 
     useEffect(() => {
+
+        document.addEventListener("keydown", getKey, true)
+
         if (userEmail.value !== '') {
             seteValid(true)
         } else {
@@ -82,6 +91,7 @@ const Login = () => {
             if (response.data.loggedIn) {
               navigate("/home", {replace: true})
             }
+            setLoaded(true)
         })
     }, [])
 
@@ -131,7 +141,12 @@ const Login = () => {
                 }
             })
         }
-
+    }
+    
+    const getKey = (e) => {
+        if (e.key === "Enter") {
+            handleLogin()
+        }
     }
 
     const errPopup = (
@@ -149,8 +164,12 @@ const Login = () => {
         navigate("/forgotpassword", {replace: true})
     }
 
+
     return (
         <>
+            <AnimatePresence>
+                {loaded ? null : <Loader/>}
+            </AnimatePresence>
             <section className="bg-cover mx-auto h-screen" style={{backgroundImage: `url(${Background})`}}>
                 <nav className="w-full h-20 flex justify-end items-center">
                     <div className='signup-button h-full w-72 flex items-center text-grey-text font-space mr-10 justify-around uppercase'>

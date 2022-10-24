@@ -2,7 +2,7 @@ import React, {useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 // SLICES
-import { setUsername, setUserEmail } from '../features/registerSlice'
+import { setUsername, setUserEmail, setValidUser, setValidEmail } from '../features/registerSlice'
 
 const Page1reg = () => {
 
@@ -67,6 +67,13 @@ const Page1reg = () => {
             setEValid(true)
         } else {
             setEValid(false)
+        }
+
+        return () => {
+            dispatch(setValidUser({value: true}))
+            dispatch(setValidEmail({value: true}))
+
+
         }
     }, [])
 
