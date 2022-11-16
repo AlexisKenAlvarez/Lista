@@ -30,8 +30,10 @@ module.exports = {
         'gradient': 'linear-gradient(75.2deg, #C344D7 34.89%, #E492C2 78.63%, #FFD0B1 116.92%)',
         'dashpink': "#FC76A1",
         'dashblue': "#70C4BF",
-        'dashpurple': "#AE68E6"
-        
+        'dashpurple': "#AE68E6",
+        'bOutline': "#4e4e54",
+        'popgreen': "#56D34B",
+        'lightgrey': "#22222E"
       },
       
       screens: {

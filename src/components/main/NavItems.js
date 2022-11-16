@@ -15,6 +15,8 @@ const NavItems = (props) => {
 
     if (id === "Dashboard") {
       dispatch(setPage({value: "dashboard"}))
+    } else if (id === "Tasks") {
+      dispatch(setPage({ value: "tasklist"}))
     }
     
   }

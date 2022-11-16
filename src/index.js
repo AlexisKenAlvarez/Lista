@@ -13,6 +13,7 @@ import loginSlice from './features/loginSlice';
 import ForgotSlice from './features/forgot';
 import handlePage from './features/heroPage';
 import  NewTask  from './features/newTaskSlice';
+import taskList from './features/taskList';
 
 export const store = configureStore({
   reducer: {
@@ -20,7 +21,8 @@ export const store = configureStore({
     Login: loginSlice,
     Forgot: ForgotSlice,
     handlePage: handlePage,
-    NewTask: NewTask
+    NewTask: NewTask,
+    TaskList: taskList
   },
   middleware: (getDefaultMiddleware) =>
   getDefaultMiddleware({

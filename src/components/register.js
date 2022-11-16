@@ -58,14 +58,6 @@ const Register = () => {
             dispatch(setConfirmPass({value: ''}))
         }
     }, [])
-
-    useEffect(() => {
-        document.addEventListener("keydown", getKey, true)
-        setTimeout(() => {
-          setPop(false)
-        }, 1000);
-      
-      }, [pop])
     
 
     // REGEX FOR EMAIL VALIDATION
@@ -163,12 +155,6 @@ const Register = () => {
 
     const handleLogin = () => {
         navigate("/", {replace: true})
-    }
-
-    const getKey = (e) => {
-        if (e.key === "Enter") {
-            handleNext()
-        }
     }
 
 

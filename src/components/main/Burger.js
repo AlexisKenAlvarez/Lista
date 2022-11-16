@@ -1,4 +1,7 @@
 import React, { useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+
+import { setSlide } from '../../features/heroPage'
 
 // IMAGES
 import BurgerImage from '../../images/burger.svg'
@@ -10,10 +13,11 @@ import SideNavList from './SideNavList'
 
 const Burger = () => {
     const [navList, setList] = useState(["Dashboard", "Tasks", "Finished", "Help"])
-    const [navActive, setNav] = useState(false);
+    const dispatch = useDispatch()
+    const slide = useSelector((state) => state.handlePage.slide)
 
     const toggleNav = () => {
-        setNav((current) => !current)
+        dispatch(setSlide({ value: !slide.value }))
     }
 
     
@@ -21,11 +25,11 @@ const Burger = () => {
         <>
             <img src={BurgerImage} alt="Menu" className='lg:hidden cursor-pointer' onClick={toggleNav}></img>
 
-            <div className='absolute top-0 left-0 h-screen w-full navhalf:w-[14rem] lg:hidden transition-all ease-in-out bg-purpletrans'
-            style={navActive ? {transform: "translateX(0%)"} : {transform: "translateX(-100%)", transitionDelay: "500ms"}}></div>
+            <div className='absolute top-0 left-0 h-screen w-full navhalf:w-[14rem] lg:hidden transition-all ease-in-out bg-purpletrans z-50'
+            style={slide.value ? {transform: "translateX(0%)"} : {transform: "translateX(-100%)", transitionDelay: "500ms"}}></div>
 
             <nav className='side-menu absolute top-0 left-0 h-screen w-full bg-[#1D1D26] navhalf:w-[14rem] lg:hidden transition-all ease-in-out delay-75 duration-500 z-50'
-            style={navActive ? {transform: "translateX(0%)"} : {transform: "translateX(-100%)"}}>
+            style={slide.value ? {transform: "translateX(0%)"} : {transform: "translateX(-100%)"}}>
                 <div className='sidenav-items ml-10 h-auto mt-10'>
                     <img src={BackButton} alt="BackButton" className='cursor-pointer select-none' onClick={toggleNav}></img>
 

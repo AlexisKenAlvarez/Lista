@@ -1,0 +1,77 @@
+.task-list-finished {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: 0.5fr 0.5fr;
+    grid-template-areas:
+    "tname tdelete"
+    "tdeadline tdelete";
+    align-items: center;
+    row-gap: 0.9rem;
+
+    @media screen and (min-width: 1024px) {
+        grid-template-columns: 3fr 15rem 4rem;
+        grid-template-rows: 1fr;
+        grid-template-areas:
+        "tname tdeadline tdelete";
+
+    }
+
+    .task-name-finished {
+        grid-area: tname;
+    }
+
+    .task-deadline-finished {
+        grid-area: tdeadline;
+    }
+
+    .task-delete-finished {
+        grid-area: tdelete;
+        justify-self: end;
+    }
+
+}
+
+// DETAILED
+.task-list-finished-detailed {
+    display: grid;
+    grid-template-columns: 1fr 10rem 5rem;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas:
+    "tname tname tdelete"
+    "tsubject tsubject tdelete"
+    "tcreated tdeadline tdeadline";
+    align-items: center;
+    column-gap: 1rem;
+    row-gap: 0.6rem;
+
+    .task-name-finished-detailed {
+        grid-area: tname;
+    }
+    
+    .task-subject-finished-detailed {
+        grid-area: tsubject;
+    }
+
+    .task-created-finished-detailed {
+        grid-area: tcreated;
+    }
+
+    .task-deadline-finished-detailed {
+        grid-area: tdeadline;
+        justify-self: end;
+        margin-right: 2.3rem;
+        padding-bottom: 1rem;
+    }
+
+    .task-delete-finished-detailed {
+        grid-area: tdelete;
+    }
+
+    .task-done-finished-detailed {
+        grid-area: tdone;
+        justify-self: end;
+
+
+    }
+}
+

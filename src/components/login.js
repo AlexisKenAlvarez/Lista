@@ -73,8 +73,6 @@ const Login = () => {
 
     useEffect(() => {
 
-        document.addEventListener("keydown", getKey, true)
-
         if (userEmail.value !== '') {
             seteValid(true)
         } else {
@@ -117,6 +115,8 @@ const Login = () => {
       }, 1000);
     
     }, [pop])
+
+
     
 
     const handleLogin = () => {
@@ -143,8 +143,8 @@ const Login = () => {
         }
     }
     
-    const getKey = (e) => {
-        if (e.key === "Enter") {
+    const handleKeyDown = (e) => {
+        if (e.keyCode === 13) {
             handleLogin()
         }
     }
@@ -184,13 +184,13 @@ const Login = () => {
 
                         <div className='mx-auto h-auto w-64 md:w-72 relative'>
                             <div>
-                                <input type="text" className="peer mt-20 w-full h-11 p-3 bg-transparent outline-0 text-grey-text border-b border-b-stone-100/40 font-space text-sm md:text-md" name="email" autoComplete='off' onBlur={handleUserEmailBlur} onFocus={handleUserEmailFocus} onChange={handleLoginEmail} value={userEmail.value} autoFocus></input>
+                                <input type="text" className="peer mt-20 w-full h-11 p-3 bg-transparent outline-0 text-grey-text border-b border-b-stone-100/40 font-space text-sm md:text-md" name="email" autoComplete='off' onBlur={handleUserEmailBlur} onFocus={handleUserEmailFocus} onChange={handleLoginEmail} value={userEmail.value} autoFocus onKeyDown={handleKeyDown}></input>
 
                                 <p className="pointer-events-none transition-all ease-in-out absolute top-[5.9rem] text-sm text-left text-input font-space left-3 peer-focus:translate-x-[8.5rem] md:peer-focus:translate-x-[10.5rem]  peer-focus:left-0 peer-focus:top-[3.2rem] peer-focus:bg-fake peer-focus:text-fake2 peer-focus:px-2 peer-focus:p-1" style={eValid ? {opacity: 0} : {opacity: 1}}>EMAIL ADDRESS</p>
                             </div>
                             
 
-                            <input type={showPassword ? "text" : "password"} className="peer mt-4 focus:mt-9 transition-all ease-in-out w-full h-11 p-3 bg-transparent outline-0 text-grey-text border-b border-b-stone-100/40 font-space text-sm md:text-md pr-14" name="pasaword" autoComplete='off' onBlur={handlePasswordBlur} onFocus={handlePasswordFocus} onChange={handleLoginPass} value={userPass.value}></input>
+                            <input type={showPassword ? "text" : "password"} className="peer mt-4 focus:mt-9 transition-all ease-in-out w-full h-11 p-3 bg-transparent outline-0 text-grey-text border-b border-b-stone-100/40 font-space text-sm md:text-md pr-14" name="pasaword" autoComplete='off' onBlur={handlePasswordBlur} onFocus={handlePasswordFocus} onChange={handleLoginPass} value={userPass.value} onKeyDown={handleKeyDown}></input>
 
                             <p className="pointer-events-none transition-all ease-in-out absolute top-[9.8rem] text-sm text-left text-input font-space left-3 peer-focus:translate-x-[8.5rem] md:peer-focus:translate-x-[12.5rem]  peer-focus:left-0 peer-focus:top-[8.5rem] peer-focus:bg-fake peer-focus:text-fake2 peer-focus:px-2 peer-focus:p-1"  style={pValid ? {opacity: 0} : {opacity: 1}}>PASSWORD</p>
 

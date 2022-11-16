@@ -1,12 +1,13 @@
 body, html {
     min-width: fit-content !important;
     background-color: #15151C;
+    overflow-x: hidden;
 }
 
 .hero-wrapper {
     display: grid;
     grid-template-columns: 18rem 1fr;
-    grid-template-rows: 7rem 1fr;
+    grid-template-rows: 6.8rem 1fr;
     grid-template-areas: 
     "upper upper"
     "main main";
