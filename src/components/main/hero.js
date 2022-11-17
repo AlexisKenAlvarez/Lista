@@ -80,9 +80,9 @@ const Hero = () => {
 
   useEffect(() => {
     Axios.get(`${process.env.REACT_APP_BASEURL}/tasks`).then((response) => {
-      const data = response.data.userData
-      const tasks = data.activeTask.length
-      const finished = data.finishedTask.length
+      const data = response.data?.userData
+      const tasks = data?.activeTask?.length
+      const finished = data?.finishedTask?.length
 
       // PUT LIST OF DATA INTO REDUX STATE
       dispatch(setList({ value: data.activeTask}))
