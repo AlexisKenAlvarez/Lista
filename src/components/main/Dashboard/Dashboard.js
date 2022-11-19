@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import DashStats from './DashStats'
 import { useSelector } from 'react-redux'
 
@@ -7,6 +7,23 @@ import RecentOld from './RecentOld'
 
 const Dashboard = (props) => {
     const task = useSelector((state) => state.TaskList.list)
+    const [usertask, setTask] = useState([{
+        taskName: '',
+        deadline: ''
+
+    }])
+    const [loading, setLoading] = useState(true)
+
+    useEffect(() => {
+
+        setTask(task.value)
+        setLoading(false)
+
+    }, [])
+
+    if (loading) {
+        return <h1 className='text-white'></h1>
+    }
 
     
     return (
