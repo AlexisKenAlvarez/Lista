@@ -7,6 +7,7 @@ import RecentOld from './RecentOld'
 
 const Dashboard = (props) => {
     const task = useSelector((state) => state.TaskList.list)
+
     
     return (
         <div className='h-auto m-10 lg:m-16'>
@@ -22,7 +23,7 @@ const Dashboard = (props) => {
             </div>
 
             {/* <RecentOld task={task?.value[task?.value?.length - 1]?.taskName} date={task?.value[task?.value?.length - 1]?.deadline} title="Most recent task"/> */}
-            <RecentOld task={task.value[0].taskName} date={task?.value[0]?.deadline} title="Oldest Task"/>
+            <RecentOld task={task.value[0].taskName} date={task.value[0].deadline} title="Oldest Task"/>
 
         </div>
     )
