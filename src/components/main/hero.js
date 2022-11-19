@@ -147,7 +147,7 @@ const Hero = () => {
       <div className='main-section relative'>
 
 
-        {page.value === "dashboard" ? <Dashboard stats={statsLabel} data={dataset.activeTask} /> :
+        {page.value === "dashboard" ? <Dashboard stats={statsLabel} status={done} /> :
           page.value === "newtask" ? <NewTask /> :
             page.value === "tasklist" ? <TaskList /> : null}
 

@@ -13,6 +13,10 @@ const Dashboard = (props) => {
         console.log(task.value)
     }, [])
 
+    if (props.status === false) {
+        return <h1>Waiting...</h1>
+    }
+
     return (
         <div className='h-auto m-10 lg:m-16'>
             <img src="https://ik.imagekit.io/efpqj5mis/LISTA/circle_nuBCc1KxT.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1665325432264" alt="Ellipse" className='absolute right-0 top-10 xl:top-28 hidden md:block md:w-24 pointer-events-none'></img>
