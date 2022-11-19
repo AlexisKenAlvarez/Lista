@@ -115,8 +115,6 @@ const Hero = () => {
     return <h1>Temporary Loading Screen...</h1>
   }
 
-
-
   return (
     <>
       <section className='hero-wrapper h-screen w-full bg-[#15151C]'>
@@ -141,11 +139,9 @@ const Hero = () => {
         </div>
         <div className='main-section relative'>
 
-
           {page.value === "dashboard" ? <Dashboard stats={statsLabel} /> :
             page.value === "newtask" ? <NewTask /> :
               page.value === "tasklist" ? <TaskList /> : null}
-
 
         </div>
         <AnimatePresence>

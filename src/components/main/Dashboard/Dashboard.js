@@ -34,12 +34,12 @@ const Dashboard = (props) => {
             <div className='w-[100%] h-auto grid grid-cols-3 mt-5 min-w-min gap-x-4 max-w-[460px] xl:max-w-[580px] xl:gap-x-6 lg:mb-24'>
 
                 {props.stats.map((items, index) => {
-                    return <DashStats key={items.text} bg={items.bg} text={items.text} stat={items.value}/>
+                    return <DashStats key={items.text} bg={items.bg} text={items.text} stat={items?.value}/>
                 })}
 
             </div>
 
-            <RecentOld task={usertask[usertask.length - 1].taskName} date={usertask[usertask.length - 1].deadline} title="Most recent task"/>
+            <RecentOld task={usertask[usertask?.length - 1].taskName} date={usertask[usertask?.length - 1].deadline} title="Most recent task"/>
             <RecentOld task={usertask[0].taskName} date={usertask[0].deadline} title="Oldest Task"/>
 
         </div>
