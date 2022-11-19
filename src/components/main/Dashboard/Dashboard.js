@@ -11,7 +11,7 @@ const Dashboard = (props) => {
     useEffect(()  => {
 
         console.log(task.value)
-        console.log(task?.value?.length)
+        console.log(props.list.length)
 
 
     }, [])

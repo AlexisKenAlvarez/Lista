@@ -84,6 +84,8 @@ const Hero = () => {
     }
   }, [deviceWidth])
 
+  const [active, setActive] = useState()
+
   useEffect(() => {
     Axios.get(`${process.env.REACT_APP_BASEURL}/tasks`).then((response) => {
       const data = response.data?.userData
@@ -93,6 +95,7 @@ const Hero = () => {
       // PUT LIST OF DATA INTO REDUX STATE
       dispatch(setList({ value: data?.activeTask }))
       dispatch(setFinished({ value: data?.finishedTask }))
+      setActive(data?.activeTask )
 
       // FOR DASHBOARD
       setStatLabel([
@@ -147,7 +150,7 @@ const Hero = () => {
       <div className='main-section relative'>
 
 
-        {page.value === "dashboard" ? <Dashboard stats={statsLabel} status={done} /> :
+        {page.value === "dashboard" ? <Dashboard stats={statsLabel} status={done} list={active}/> :
           page.value === "newtask" ? <NewTask /> :
             page.value === "tasklist" ? <TaskList /> : null}
 
