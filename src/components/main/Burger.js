@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import Axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 import { setSlide } from '../../features/heroPage'
 
@@ -15,10 +17,19 @@ const Burger = () => {
     const [navList, setList] = useState(["Dashboard", "Tasks", "Finished", "Help"])
     const dispatch = useDispatch()
     const slide = useSelector((state) => state.handlePage.slide)
+    const navigate = useNavigate()
+    Axios.defaults.withCredentials = true
 
     const toggleNav = () => {
         dispatch(setSlide({ value: !slide.value }))
     }
+
+    const handleLogout = () => {
+        dispatch(setSlide({ value: !slide.value }))
+        Axios.post(`${process.env.REACT_APP_BASEURL}/logout`).then((response) => {
+          navigate("/", { replace: true })
+        })
+      }
 
     
     return (
@@ -40,6 +51,8 @@ const Burger = () => {
                             return <SideNavList key={index} text={text}/>
                         })}
                     </ul>
+
+                    <p className='ml-3 font-space text-[#D05261] font-bold select-none' onClick={handleLogout}>LOG OUT</p>
                 </div>
             </nav>
         </>
