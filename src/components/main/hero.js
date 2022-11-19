@@ -85,10 +85,13 @@ const Hero = () => {
     Axios.get(`${process.env.REACT_APP_BASEURL}/tasks`).then((response) => {
 
       setData(response.data.userData)
+      const dataRes = response.data
+      const active = dataRes.userData.activeTask
+      const finish = dataRes.userData.finishedTask
 
       // PUT LIST OF DATA INTO REDUX STATE
-      dispatch(setList({ value: response.data.userData?.activeTask }))
-      dispatch(setFinished({ value: response.data.userData?.finishedTask }))
+      dispatch(setList({ value: active }))
+      dispatch(setFinished({ value: finish }))
 
       setList(true)
 
