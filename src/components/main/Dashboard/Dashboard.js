@@ -18,7 +18,7 @@ const Dashboard = (props) => {
     useEffect(() => {
 
         setTask(task.value)
-        setNum(task.value.length - 1)
+        setNum(task.value?.length - 1)
         setLoading(false)
 
     }, [])
