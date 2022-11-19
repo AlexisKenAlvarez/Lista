@@ -82,13 +82,13 @@ const Hero = () => {
   useEffect(() => {
     Axios.get(`${process.env.REACT_APP_BASEURL}/tasks`).then((response) => {
       let finished = 0
-      const data = response.data?.userData
-      const tasks = data?.activeTask?.length
-      finished = data?.finishedTask?.length
+      const data = response.data.userData
+      const tasks = data.activeTask.length
+      finished = data.finishedTask.length
 
       // PUT LIST OF DATA INTO REDUX STATE
-      dispatch(setList({ value: data?.activeTask}))
-      dispatch(setFinished({ value: data?.finishedTask }))
+      dispatch(setList({ value: data.activeTask}))
+      dispatch(setFinished({ value: data.finishedTask }))
 
       // FOR DASHBOARD
       setStatLabel([
