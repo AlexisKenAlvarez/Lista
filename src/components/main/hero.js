@@ -86,8 +86,8 @@ const Hero = () => {
 
       setData(response.data.userData)
       const dataRes = response.data
-      const active = dataRes.userData.activeTask
-      const finish = dataRes.userData.finishedTask
+      const active = dataRes.userData?.activeTask
+      const finish = dataRes.userData?.finishedTask
 
       // PUT LIST OF DATA INTO REDUX STATE
       dispatch(setList({ value: active }))
