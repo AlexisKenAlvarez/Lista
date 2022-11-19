@@ -102,7 +102,7 @@ const Hero = () => {
         },
         {
           text: "User Level",
-          value: Math.floor(finished / 5),
+          value: data.finishedTask.length ? Math.floor(finished / 5) : 0,
           bg: "#AE68E6",
         }]
       )
