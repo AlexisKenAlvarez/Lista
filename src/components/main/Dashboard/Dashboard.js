@@ -7,7 +7,7 @@ import RecentOld from './RecentOld'
 
 const Dashboard = (props) => {
     const task = useSelector((state) => state.TaskList.list)
-    const end = task.value.length
+    const end = task.value ? task.value.length : null
     const [usertask, setTask] = useState([{
         taskName: '',
         deadline: ''
