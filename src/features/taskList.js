@@ -8,10 +8,7 @@ const initialState = {
         value: false
     },
     list: {
-        value: [{
-            taskName: '',
-            deadline: ''
-        }]
+        value: []
     },
     finished: {
         value: []
