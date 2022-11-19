@@ -80,6 +80,7 @@ const Hero = () => {
 
     return () => {
       window.removeEventListener("resize", resizeW)
+      setDone(false)
     }
   }, [deviceWidth])
 
