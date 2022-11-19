@@ -83,15 +83,7 @@ const Hero = () => {
 
   useEffect(() => {
     Axios.get(`${process.env.REACT_APP_BASEURL}/tasks`).then((response) => {
-
       setData(response.data.userData)
-      const dataRes = response.data
-      const active = dataRes.userData?.activeTask
-      const finish = dataRes.userData?.finishedTask
-
-      // PUT LIST OF DATA INTO REDUX STATE
-      dispatch(setList({ value: active }))
-      dispatch(setFinished({ value: finish }))
 
       setList(true)
 
@@ -100,25 +92,29 @@ const Hero = () => {
   }, [request, toggleUpdate])
 
   useEffect(() => {
-    // FOR DASHBOARD
-    setStatLabel([
-      {
-        text: "Active Tasks",
-        value: data?.activeTask.length,
-        bg: "#FC76A1",
-      },
-      {
-        text: "Finished Tasks",
-        value: data?.finishedTask.length,
-        bg: "#70C4BF",
-      },
-      {
-        text: "User Level",
-        value: Math.floor(data?.finishedTask.length / 5),
-        bg: "#AE68E6",
-      }]
-    )
+    if (list) {
+      // FOR DASHBOARD
+      setStatLabel([
+        {
+          text: "Active Tasks",
+          value: data?.activeTask.length,
+          bg: "#FC76A1",
+        },
+        {
+          text: "Finished Tasks",
+          value: data?.finishedTask.length,
+          bg: "#70C4BF",
+        },
+        {
+          text: "User Level",
+          value: Math.floor(data?.finishedTask.length / 5),
+          bg: "#AE68E6",
+        }]
+      )
 
+      dispatch(setList({ value: data.activeTask }))
+      dispatch(setFinished({ value: data.finishedTask }))
+    }
 
   }, [data])
 
