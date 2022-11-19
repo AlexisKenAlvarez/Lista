@@ -116,7 +116,7 @@ const Hero = () => {
       dispatch(setFinished({ value: data.finishedTask }))
     }
 
-  }, [data])
+  }, [data, log, list])
 
 
 
