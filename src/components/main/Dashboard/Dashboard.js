@@ -7,7 +7,7 @@ import RecentOld from './RecentOld'
 
 const Dashboard = (props) => {
     const task = useSelector((state) => state.TaskList.list)
-    const end = task.value ? task.value.length : null
+    const end = task.value ? task.value.length - 1 : null
     const [usertask, setTask] = useState([{
         taskName: '',
         deadline: ''
@@ -40,7 +40,7 @@ const Dashboard = (props) => {
 
             </div>
 
-            <RecentOld task={usertask[end - 1]?.taskName} date={usertask[end - 1]?.deadline} title="Most recent task"/>
+            <RecentOld task={usertask[end]?.taskName} date={usertask[end]?.deadline} title="Most recent task"/>
             <RecentOld task={usertask[0]?.taskName} date={usertask[0]?.deadline} title="Oldest Task"/>
 
         </div>
