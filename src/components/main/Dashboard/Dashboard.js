@@ -12,6 +12,8 @@ const Dashboard = (props) => {
 
         console.log(task.value)
         console.log(task?.value?.length - 1)
+        console.log(task.value.length - 1)
+
 
     }, [])
 
@@ -28,8 +30,8 @@ const Dashboard = (props) => {
 
         </div>
 
-        <RecentOld task={task?.value[task?.value?.length - 1]?.taskName} date={task?.value[task?.value?.length - 1]?.deadline} title="Most recent task"/>
-        <RecentOld task={task?.value[0]?.taskName} date={task?.value[0]?.deadline} title="Oldest Task"/>
+        {/* <RecentOld task={task?.value[task?.value?.length - 1]?.taskName} date={task?.value[task?.value?.length - 1]?.deadline} title="Most recent task"/>
+        <RecentOld task={task?.value[0]?.taskName} date={task?.value[0]?.deadline} title="Oldest Task"/> */}
 
     </div>
     )
