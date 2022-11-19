@@ -25,6 +25,7 @@ import ConfirmPop from './TaskList/ConfirmPop'
 
 const Hero = () => {
   const [log, setLog] = useState(false)
+  const [list, setList] = useState(false)
   const [statsLabel, setStatLabel] = useState([])
   const confirm = useSelector((state) => state.NewTask.confirmed)
   const request = useSelector((state) => state.NewTask.request)
@@ -107,12 +108,15 @@ const Hero = () => {
           bg: "#AE68E6",
         }]
       )
+
+      setList(true)
+
     })
   
   }, [request, toggleUpdate])
   
 
-  if (!log) {
+  if (!log && !list) {
     return <h1>Temporary Loading Screen...</h1>
   }
 

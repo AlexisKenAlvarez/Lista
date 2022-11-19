@@ -7,26 +7,11 @@ import RecentOld from './RecentOld'
 
 const Dashboard = (props) => {
     const task = useSelector((state) => state.TaskList.list)
-    const end = task.value ? task.value.length - 1 : null
-    const [usertask, setTask] = useState([{
-        taskName: '',
-        deadline: ''
-
-    }])
-    const [loading, setLoading] = useState(true)
-
-    useEffect(() => {
-
-        setTask(task.value)
-        setLoading(false)
-
-    }, [])
 
     if (loading) {
         return <h1 className='text-white'></h1>
     }
 
-    
     return (
         <div className='h-auto m-10 lg:m-16'>
             <img src="https://ik.imagekit.io/efpqj5mis/LISTA/circle_nuBCc1KxT.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1665325432264" alt="Ellipse" className='absolute right-0 top-10 xl:top-28 hidden md:block md:w-24 pointer-events-none'></img>
@@ -40,8 +25,8 @@ const Dashboard = (props) => {
 
             </div>
 
-            <RecentOld task={usertask[end]?.taskName} date={usertask[end]?.deadline} title="Most recent task"/>
-            <RecentOld task={usertask[0]?.taskName} date={usertask[0]?.deadline} title="Oldest Task"/>
+            <RecentOld task={task.value[task.value.length - 1].taskName} date={task.value[task.value.length - 1].deadline} title="Most recent task"/>
+            <RecentOld task={task.value[0].taskName} date={task.value[0].deadline} title="Oldest Task"/>
 
         </div>
     )
