@@ -24,17 +24,19 @@ import ConfirmPop from './TaskList/ConfirmPop'
 
 
 const Hero = () => {
-  const [log, setLog] = useState(false)
-  const [list, setList] = useState(false)
-  const [statsLabel, setStatLabel] = useState([])
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
   const confirm = useSelector((state) => state.NewTask.confirmed)
   const request = useSelector((state) => state.NewTask.request)
   const [deviceWidth, setDeviceWidth] = useState(window.innerWidth)
-  const [device, setDevice] = useState('')
-  const navigate = useNavigate()
-  const dispatch = useDispatch()
-
   const toggleUpdate = useSelector((state) => state.TaskList.toggleUpdate)
+
+
+  const [log, setLog] = useState(false)
+  const [list, setList] = useState(false)
+  const [data, setData] = useState()
+  const [device, setDevice] = useState('')
+  const [statsLabel, setStatLabel] = useState([])
 
 
   Axios.defaults.withCredentials = true
@@ -62,7 +64,7 @@ const Hero = () => {
 
   }, [])
 
-  
+
   useEffect(() => {
     const resizeW = () => setDeviceWidth(window.innerWidth)
 
@@ -73,7 +75,7 @@ const Hero = () => {
     } else {
       setDevice("desktop")
     }
-  
+
     return () => {
       window.removeEventListener("resize", resizeW)
     }
@@ -81,40 +83,43 @@ const Hero = () => {
 
   useEffect(() => {
     Axios.get(`${process.env.REACT_APP_BASEURL}/tasks`).then((response) => {
-      let finished = 0
-      const data = response.data.userData
-      const tasks = data.activeTask.length
-      finished = data.finishedTask.length
+
+      setData(response.data.userData)
 
       // PUT LIST OF DATA INTO REDUX STATE
-      dispatch(setList({ value: data.activeTask}))
+      dispatch(setList({ value: data.activeTask }))
       dispatch(setFinished({ value: data.finishedTask }))
-
-      // FOR DASHBOARD
-      setStatLabel([
-        {
-          text: "Active Tasks",
-          value: tasks,
-          bg: "#FC76A1",
-        },
-        {
-          text: "Finished Tasks",
-          value: finished,
-          bg: "#70C4BF",
-        },
-        {
-          text: "User Level",
-          value: Math.floor(finished / 5),
-          bg: "#AE68E6",
-        }]
-      )
 
       setList(true)
 
     })
-  
+
   }, [request, toggleUpdate])
-  
+
+  useEffect(() => {
+    // FOR DASHBOARD
+    setStatLabel([
+      {
+        text: "Active Tasks",
+        value: data.activeTask.length,
+        bg: "#FC76A1",
+      },
+      {
+        text: "Finished Tasks",
+        value: data.finishedTask.length,
+        bg: "#70C4BF",
+      },
+      {
+        text: "User Level",
+        value: Math.floor(data.finishedTask.length / 5),
+        bg: "#AE68E6",
+      }]
+    )
+
+
+  }, [data])
+
+
 
   if (!log && !list) {
     return <h1>Temporary Loading Screen...</h1>
@@ -150,9 +155,9 @@ const Hero = () => {
 
         </div>
         <AnimatePresence>
-          {request.value ? confirm.value ? device === "phone" ? <PhonePop key="phonePop"/> : <DeskPop key="deskPop"/> : null : confirm.value ? device === "phone" ? <PhonePop key="phonePop"/> : <DeskPop key="deskPop"/> : null}
-          {taskAction.value !== '' ? <ConfirmPop/> : null}
-          
+          {request.value ? confirm.value ? device === "phone" ? <PhonePop key="phonePop" /> : <DeskPop key="deskPop" /> : null : confirm.value ? device === "phone" ? <PhonePop key="phonePop" /> : <DeskPop key="deskPop" /> : null}
+          {taskAction.value !== '' ? <ConfirmPop /> : null}
+
         </AnimatePresence>
 
       </section>
