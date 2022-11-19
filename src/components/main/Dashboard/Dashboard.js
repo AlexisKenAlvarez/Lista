@@ -40,8 +40,8 @@ const Dashboard = (props) => {
 
             </div>
 
-            <RecentOld task={usertask[end - 1].taskName} date={usertask[end - 1].deadline} title="Most recent task"/>
-            <RecentOld task={usertask[0].taskName} date={usertask[0].deadline} title="Oldest Task"/>
+            <RecentOld task={usertask[end - 1]?.taskName} date={usertask[end - 1]?.deadline} title="Most recent task"/>
+            <RecentOld task={usertask[0]?.taskName} date={usertask[0]?.deadline} title="Oldest Task"/>
 
         </div>
     )
