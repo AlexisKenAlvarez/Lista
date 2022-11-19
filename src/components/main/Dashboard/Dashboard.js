@@ -13,10 +13,12 @@ const Dashboard = (props) => {
 
     }])
     const [loading, setLoading] = useState(true)
+    const [taskNum, setNum] = useState(0)
 
     useEffect(() => {
 
         setTask(task.value)
+        setNum(usertask.length - 1)
         setLoading(false)
 
     }, [])
@@ -39,7 +41,7 @@ const Dashboard = (props) => {
 
             </div>
 
-            <RecentOld task={usertask[usertask?.length - 1].taskName} date={usertask[usertask?.length - 1].deadline} title="Most recent task"/>
+            <RecentOld task={usertask[taskNum].taskName} date={usertask[taskNum].deadline} title="Most recent task"/>
             <RecentOld task={usertask[0].taskName} date={usertask[0].deadline} title="Oldest Task"/>
 
         </div>
