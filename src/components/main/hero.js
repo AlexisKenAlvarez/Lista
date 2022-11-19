@@ -101,17 +101,17 @@ const Hero = () => {
     setStatLabel([
       {
         text: "Active Tasks",
-        value: data.activeTask.length,
+        value: data?.activeTask.length,
         bg: "#FC76A1",
       },
       {
         text: "Finished Tasks",
-        value: data.finishedTask.length,
+        value: data?.finishedTask.length,
         bg: "#70C4BF",
       },
       {
         text: "User Level",
-        value: Math.floor(data.finishedTask.length / 5),
+        value: Math.floor(data?.finishedTask.length / 5),
         bg: "#AE68E6",
       }]
     )
