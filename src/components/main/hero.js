@@ -53,8 +53,10 @@ const Hero = () => {
       console.log(response)
       if (response.data?.loggedIn) {
         setLog(true)
+        console.log("TRUE")
       } else {
         setLog(false)
+        console.log("FALSE")
         navigate("/", { replace: true })
 
       }
