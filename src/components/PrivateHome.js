@@ -29,8 +29,8 @@ export const PrivateHome = () => {
                 setActive(data?.activeTask?.length)
                 setFinished(data?.finishedTask?.length)
 
-                console.log(data?.activeTask)
-                console.log(data?.finishedTask)
+                console.log(data.activeTask)
+                console.log(data.finishedTask)
                 console.log(data)
           
                 // PUT LIST OF DATA INTO REDUX STATE
