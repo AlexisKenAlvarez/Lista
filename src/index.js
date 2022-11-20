@@ -6,7 +6,6 @@ import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import App from './App';
 import './index.css'
-import thunk from "redux-thunk" 
 
 // slices
 import Register from './features/registerSlice'
@@ -25,9 +24,11 @@ export const store = configureStore({
     NewTask: NewTask,
     TaskList: taskList
   },
+  
   middleware: (getDefaultMiddleware) =>
   getDefaultMiddleware({
     serializableCheck: false,
+    thunk: true
   }),
 })
 

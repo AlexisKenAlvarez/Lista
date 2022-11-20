@@ -33,6 +33,8 @@ export const PrivateHome = () => {
                 dispatch(setList({ value: data?.activeTask }))
                 dispatch(setFinished({ value: data?.finishedTask }))
 
+                console.log(data?.activeTask)
+                console.log(data?.finishedTask)
                 console.log(data)
 
                 setLog(true)
