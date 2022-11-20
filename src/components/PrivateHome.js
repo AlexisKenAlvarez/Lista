@@ -26,16 +26,24 @@ export const PrivateHome = () => {
 
             Axios.get(`${process.env.REACT_APP_BASEURL}/tasks`).then((response) => {
                 const data = response.data?.userData
+                const active = response.data.userData.activeTask
+                const finished = response.data.userData.finishedTask
                 setActive(data?.activeTask?.length)
                 setFinished(data?.finishedTask?.length)
 
                 console.log(response.data.userData.activeTask)
                 console.log(response.data.userData.finishedTask)
-          
-                // PUT LIST OF DATA INTO REDUX STATE
-                dispatch(setList({ value: response.data.userData.activeTask }))
-                dispatch(setFinished({ value: response.data.userData.finishedTask }))
 
+                // PUT LIST OF DATA INTO REDUX STATE
+                if (finished.length > 0) {
+                    dispatch(setFinished({ value: response.data.userData.finishedTask }))
+                }
+
+                if (active.length > 0) {
+                    dispatch(setList({ value: response.data.userData.activeTask }))
+                }
+          
+                
 
 
                 setLog(true)

@@ -10,11 +10,20 @@ const initialState = {
     list: {
         value: [{
             taskName: '',
-            deadline: ''
+            taskSubject: '',
+            deadline: '',
+            status: '',
+            dateCreated: ''
         }]
     },
     finished: {
-        value: []
+        value: [{
+            taskName: '',
+            taskSubject: '',
+            deadline: '',
+            status: '',
+            dateCreated: ''
+        }]
     },
     deleteId: {
         value: ''
