@@ -49,7 +49,7 @@ const Hero = () => {
 
   useEffect(() => {
     Axios.get(`${process.env.REACT_APP_BASEURL}/login`).then((response) => {
-      if (response.data.loggedIn) {
+      if (response.data?.loggedIn) {
         setLog(true)
       } else {
         setLog(false)
@@ -95,7 +95,7 @@ const Hero = () => {
       // PUT LIST OF DATA INTO REDUX STATE
       dispatch(setList({ value: data?.activeTask }))
       dispatch(setFinished({ value: data?.finishedTask }))
-      setActive(data?.activeTask )
+      setActive(data?.activeTask)
 
       // FOR DASHBOARD
       setStatLabel([
