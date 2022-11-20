@@ -72,6 +72,7 @@ const Hero = (props) => {
   useEffect(() => {
     console.log(props.active)
     console.log(props.finished)
+    console.log(page.value)
 
     // FOR DASHBOARD
     setStatLabel([
