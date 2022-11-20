@@ -74,24 +74,7 @@ const Hero = (props) => {
     console.log(props.finished)
     console.log(page.value)
 
-    // FOR DASHBOARD
-    setStatLabel([
-      {
-        text: "Active Tasks",
-        value: props.active,
-        bg: "#FC76A1",
-      },
-      {
-        text: "Finished Tasks",
-        value: props.finished,
-        bg: "#70C4BF",
-      },
-      {
-        text: "User Level",
-        value: Math.floor(props.finished / 5),
-        bg: "#AE68E6",
-      }]
-    )
+
 
 
   }, [request, toggleUpdate])

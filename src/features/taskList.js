@@ -25,6 +25,13 @@ const initialState = {
             dateCreated: ''
         }]
     },
+    stats: {
+        value: [{
+            text: '',
+            value: '',
+            bg: ''
+        }]
+    },
     deleteId: {
         value: ''
     },
@@ -76,9 +83,12 @@ export const taskListSlice = createSlice({
         },
         setToggleUpdate: (state, action) => {
             state.toggleUpdate = action.payload
+        },
+        setStats: (state, action) => {
+            state.stats = action.payload
         }
     }
 })
 
-export const { setView, setDrop, setList, setFinished, toDelete, setDeleteId, setDeleteAction, setDeleteFrom, setToggleUpdate, toDeleteFinish } = taskListSlice.actions
+export const { setView, setDrop, setList, setFinished, toDelete, setDeleteId, setDeleteAction, setDeleteFrom, setToggleUpdate, toDeleteFinish, setStats } = taskListSlice.actions
 export default taskListSlice.reducer

@@ -7,11 +7,13 @@ import RecentOld from './RecentOld'
 
 const Dashboard = (props) => {
     const task = useSelector((state) => state.TaskList.list)
+    const stats = useSelector((state) => state.TaskList.stats)
+
 
     useEffect(()  => {
 
         console.log(task.value)
-        console.log(props.stats)
+        console.log(stats)
 
     }, [])
 
@@ -22,7 +24,7 @@ const Dashboard = (props) => {
         <h1 className='text-white font-space text-3xl md:text-4xl font-bold'>Welcome User</h1>
         <div className='w-[100%] h-auto grid grid-cols-3 mt-5 min-w-min gap-x-4 max-w-[460px] xl:max-w-[580px] xl:gap-x-6 lg:mb-24'>
 
-            {props.stats.map((items, index) => {
+            {stats.map((items, index) => {
                 return <DashStats key={items.text} bg={items.bg} text={items.text} stat={items?.value}/>
             })}
 
