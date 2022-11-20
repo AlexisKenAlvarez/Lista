@@ -29,7 +29,7 @@ export const PrivateHome = () => {
                 setActive(data?.activeTask?.length)
                 setFinished(data?.finishedTask?.length)
 
-                console.log(data.activeTask)
+                console.log(response.data.userData.activeTask)
                 console.log(data.finishedTask)
                 console.log(data)
           
