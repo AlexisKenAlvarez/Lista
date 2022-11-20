@@ -30,11 +30,11 @@ export const PrivateHome = () => {
                 setFinished(data?.finishedTask?.length)
 
                 console.log(response.data.userData.activeTask)
-                console.log(response.data.userData.finished)
+                console.log(response.data.userData.finishedTask)
           
                 // PUT LIST OF DATA INTO REDUX STATE
                 dispatch(setList({ value: response.data.userData.activeTask }))
-                dispatch(setFinished({ value: response.data.userData.finished }))
+                dispatch(setFinished({ value: response.data.userData.finishedTask }))
 
 
 
