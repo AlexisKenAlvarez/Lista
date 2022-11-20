@@ -94,49 +94,47 @@ const Hero = (props) => {
     )
 
 
-}, [request, toggleUpdate])
+  }, [request, toggleUpdate])
 
-return (
-  <>
-    <section className='hero-wrapper h-screen w-full bg-[#15151C]'>
-      <div className='navbar-up bg-side flex items-center justify-center'>
-        <NavbarUp />
-      </div>
-      <div className='navbar-left bg-side hidden lg:block'>
+  return (
+    <>
+      <section className='hero-wrapper h-screen w-full bg-[#15151C]'>
+        <div className='navbar-up bg-side flex items-center justify-center'>
+          <NavbarUp />
+        </div>
+        <div className='navbar-left bg-side hidden lg:block'>
 
-        <div className='nav-container w-full h-auto mx-auto'>
-          <Logo />
-          <div className='w-full h-auto mx-auto mt-10 p-0'>
-            <ul className='text-white flex flex-col justify-center w-full p-0'>
+          <div className='nav-container w-full h-auto mx-auto'>
+            <Logo />
+            <div className='w-full h-auto mx-auto mt-10 p-0'>
+              <ul className='text-white flex flex-col justify-center w-full p-0'>
 
-              <NavItems src="https://ik.imagekit.io/efpqj5mis/LISTA/Nav/dashboard1_ufXkO3rzC.png?ik-sdk-version=javascript-1.4.3&updatedAt=1665153932659" text="Dashboard" />
-              <NavItems src="https://ik.imagekit.io/efpqj5mis/LISTA/Nav/activities_CkrcAsu84.png?ik-sdk-version=javascript-1.4.3&updatedAt=1665153932627" text="Tasks" />
-              <NavItems src="https://ik.imagekit.io/efpqj5mis/LISTA/Nav/done_haguUW8l2.png?ik-sdk-version=javascript-1.4.3&updatedAt=1665153932321" text="Finished" />
-              <NavItems src="https://ik.imagekit.io/efpqj5mis/LISTA/Nav/help_8iHQFtaTd.png?ik-sdk-version=javascript-1.4.3&updatedAt=1665153932528" text="Help" />
+                <NavItems src="https://ik.imagekit.io/efpqj5mis/LISTA/Nav/dashboard1_ufXkO3rzC.png?ik-sdk-version=javascript-1.4.3&updatedAt=1665153932659" text="Dashboard" />
+                <NavItems src="https://ik.imagekit.io/efpqj5mis/LISTA/Nav/activities_CkrcAsu84.png?ik-sdk-version=javascript-1.4.3&updatedAt=1665153932627" text="Tasks" />
+                <NavItems src="https://ik.imagekit.io/efpqj5mis/LISTA/Nav/done_haguUW8l2.png?ik-sdk-version=javascript-1.4.3&updatedAt=1665153932321" text="Finished" />
+                <NavItems src="https://ik.imagekit.io/efpqj5mis/LISTA/Nav/help_8iHQFtaTd.png?ik-sdk-version=javascript-1.4.3&updatedAt=1665153932528" text="Help" />
 
-            </ul>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
-      <div className='main-section relative'>
+        <div className='main-section relative'>
 
+          {page.value === "dashboard" ? <Dashboard stats={statsLabel} /> :
+            page.value === "newtask" ? <NewTask /> :
+              page.value === "tasklist" ? <TaskList /> : null}
 
-        {page.value === "dashboard" ? <Dashboard stats={statsLabel} status={done} /> :
-          page.value === "newtask" ? <NewTask /> :
-            page.value === "tasklist" ? <TaskList /> : null}
+        </div>
+        <AnimatePresence>
+          {request.value ? confirm.value ? device === "phone" ? <PhonePop key="phonePop" /> : <DeskPop key="deskPop" /> : null : confirm.value ? device === "phone" ? <PhonePop key="phonePop" /> : <DeskPop key="deskPop" /> : null}
+          {taskAction.value !== '' ? <ConfirmPop /> : null}
 
+        </AnimatePresence>
 
-      </div>
-      <AnimatePresence>
-        {request.value ? confirm.value ? device === "phone" ? <PhonePop key="phonePop" /> : <DeskPop key="deskPop" /> : null : confirm.value ? device === "phone" ? <PhonePop key="phonePop" /> : <DeskPop key="deskPop" /> : null}
-        {taskAction.value !== '' ? <ConfirmPop /> : null}
+      </section>
 
-      </AnimatePresence>
-
-    </section>
-
-  </>
-)
+    </>
+  )
 }
 
 export default Hero
