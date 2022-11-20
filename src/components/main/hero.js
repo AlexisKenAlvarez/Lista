@@ -70,6 +70,9 @@ const Hero = (props) => {
   // }, [deviceWidth])
 
   useEffect(() => {
+    console.log(props.active)
+    console.log(props.finished)
+
     // FOR DASHBOARD
     setStatLabel([
       {

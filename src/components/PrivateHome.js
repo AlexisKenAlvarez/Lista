@@ -25,14 +25,11 @@ export const PrivateHome = () => {
         if (response.data?.loggedIn) {
 
             Axios.get(`${process.env.REACT_APP_BASEURL}/tasks`).then((response) => {
-                const data = response.data?.userData
+                const data = response.data.userData
                 const active = response.data.userData.activeTask
                 const finished = response.data.userData.finishedTask
-                setActive(data?.activeTask?.length)
-                setFinished(data?.finishedTask?.length)
-
-                console.log(response.data.userData.activeTask)
-                console.log(response.data.userData.finishedTask)
+                setActive(data.activeTask.length)
+                setFinished(data.finishedTask.length)
 
                 // PUT LIST OF DATA INTO REDUX STATE
                 if (finished.length > 0) {
