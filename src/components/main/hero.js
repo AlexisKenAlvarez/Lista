@@ -52,22 +52,22 @@ const Hero = () => {
   }, [])
 
 
-  useEffect(() => {
-    const resizeW = () => setDeviceWidth(window.innerWidth)
+  // useEffect(() => {
+  //   const resizeW = () => setDeviceWidth(window.innerWidth)
 
-    window.addEventListener("resize", resizeW)
+  //   window.addEventListener("resize", resizeW)
 
-    if (deviceWidth <= 1023) {
-      setDevice("phone")
-    } else {
-      setDevice("desktop")
-    }
+  //   if (deviceWidth <= 1023) {
+  //     setDevice("phone")
+  //   } else {
+  //     setDevice("desktop")
+  //   }
 
-    return () => {
-      window.removeEventListener("resize", resizeW)
-      setDone(false)
-    }
-  }, [deviceWidth])
+  //   return () => {
+  //     window.removeEventListener("resize", resizeW)
+  //     setDone(false)
+  //   }
+  // }, [deviceWidth])
 
   const [active, setActive] = useState()
 
