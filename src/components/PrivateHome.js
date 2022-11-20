@@ -22,6 +22,7 @@ export const PrivateHome = () => {
 
     useEffect(() => {
       dispatch(setStats({ value: statLabel }))
+      console.log(statLabel)
     
     }, [statLabel])
     
