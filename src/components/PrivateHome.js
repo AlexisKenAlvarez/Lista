@@ -6,21 +6,44 @@ import Axios from 'axios'
 // COMPONENTS
 import Loader from './loader/Loader'
 import Hero from './main/hero'
+import { useDispatch } from 'react-redux'
+import { setList, setFinished } from '../features/taskList'
 
 export const PrivateHome = () => {
     Axios.defaults.withCredentials = true
+
+    const dispatch = useDispatch()
     const navigate = useNavigate()
+
     const [loggedIn, setLog] = useState(false)
+    const [finished, setFinished] = useState(0)
+    const [active, setActive] = useState(0)
 
     Axios.get(`${process.env.REACT_APP_BASEURL}/login`).then((response) => {
         console.log("TEST LOGIN")
         console.log(response)
         if (response.data?.loggedIn) {
-            setLog(true)
-            console.log("TRUE")
+
+            Axios.get(`${process.env.REACT_APP_BASEURL}/tasks`).then((response) => {
+                const data = response.data?.userData
+                setActive(data?.activeTask?.length)
+                setFinished(data?.finishedTask?.length)
+          
+                // PUT LIST OF DATA INTO REDUX STATE
+                dispatch(setList({ value: data?.activeTask }))
+                dispatch(setFinished({ value: data?.finishedTask }))
+          
+                console.log(response)
+                console.log(data)
+                console.log(tasks)       
+
+                setLog(true)
+
+              })
+
         } else {
             setLog(false)
-            console.log("FALSE")
+
             navigate("/", { replace: true })
 
         }
@@ -35,6 +58,6 @@ export const PrivateHome = () => {
     }
 
     return (
-        <Hero/>
+        <Hero finished={finished} active={active}/>
     )
 }

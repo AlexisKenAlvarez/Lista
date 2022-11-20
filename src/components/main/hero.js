@@ -23,7 +23,7 @@ import DeskPop from './New/Popup/DeskPop'
 import ConfirmPop from './TaskList/ConfirmPop'
 
 
-const Hero = () => {
+const Hero = (props) => {
   const [done, setDone] = useState(false)
   const [statsLabel, setStatLabel] = useState([])
   const confirm = useSelector((state) => state.NewTask.confirmed)
@@ -69,88 +69,70 @@ const Hero = () => {
   //   }
   // }, [deviceWidth])
 
-  const [active, setActive] = useState()
-
   useEffect(() => {
-    Axios.get(`${process.env.REACT_APP_BASEURL}/tasks`).then((response) => {
-      const data = response.data?.userData
-      const tasks = data?.activeTask?.length
-      const finished = data?.finishedTask?.length
+    // FOR DASHBOARD
+    setStatLabel([
+      {
+        text: "Active Tasks",
+        value: props.active,
+        bg: "#FC76A1",
+      },
+      {
+        text: "Finished Tasks",
+        value: props.finished,
+        bg: "#70C4BF",
+      },
+      {
+        text: "User Level",
+        value: Math.floor(props.finished / 5),
+        bg: "#AE68E6",
+      }]
+    )
 
-      // PUT LIST OF DATA INTO REDUX STATE
-      dispatch(setList({ value: data?.activeTask }))
-      dispatch(setFinished({ value: data?.finishedTask }))
-      setActive(data?.activeTask)
 
-      console.log(response)
-      console.log(data)
-      console.log(tasks)
+}, [request, toggleUpdate])
 
-      // FOR DASHBOARD
-      setStatLabel([
-        {
-          text: "Active Tasks",
-          value: tasks,
-          bg: "#FC76A1",
-        },
-        {
-          text: "Finished Tasks",
-          value: finished,
-          bg: "#70C4BF",
-        },
-        {
-          text: "User Level",
-          value: Math.floor(finished / 5),
-          bg: "#AE68E6",
-        }]
-      )
+return (
+  <>
+    <section className='hero-wrapper h-screen w-full bg-[#15151C]'>
+      <div className='navbar-up bg-side flex items-center justify-center'>
+        <NavbarUp />
+      </div>
+      <div className='navbar-left bg-side hidden lg:block'>
 
-      setDone(true)
-    })
+        <div className='nav-container w-full h-auto mx-auto'>
+          <Logo />
+          <div className='w-full h-auto mx-auto mt-10 p-0'>
+            <ul className='text-white flex flex-col justify-center w-full p-0'>
 
-  }, [request, toggleUpdate])
+              <NavItems src="https://ik.imagekit.io/efpqj5mis/LISTA/Nav/dashboard1_ufXkO3rzC.png?ik-sdk-version=javascript-1.4.3&updatedAt=1665153932659" text="Dashboard" />
+              <NavItems src="https://ik.imagekit.io/efpqj5mis/LISTA/Nav/activities_CkrcAsu84.png?ik-sdk-version=javascript-1.4.3&updatedAt=1665153932627" text="Tasks" />
+              <NavItems src="https://ik.imagekit.io/efpqj5mis/LISTA/Nav/done_haguUW8l2.png?ik-sdk-version=javascript-1.4.3&updatedAt=1665153932321" text="Finished" />
+              <NavItems src="https://ik.imagekit.io/efpqj5mis/LISTA/Nav/help_8iHQFtaTd.png?ik-sdk-version=javascript-1.4.3&updatedAt=1665153932528" text="Help" />
 
-  return (
-    <>
-      <section className='hero-wrapper h-screen w-full bg-[#15151C]'>
-        <div className='navbar-up bg-side flex items-center justify-center'>
-          <NavbarUp />
-        </div>
-        <div className='navbar-left bg-side hidden lg:block'>
-
-          <div className='nav-container w-full h-auto mx-auto'>
-            <Logo />
-            <div className='w-full h-auto mx-auto mt-10 p-0'>
-              <ul className='text-white flex flex-col justify-center w-full p-0'>
-
-                <NavItems src="https://ik.imagekit.io/efpqj5mis/LISTA/Nav/dashboard1_ufXkO3rzC.png?ik-sdk-version=javascript-1.4.3&updatedAt=1665153932659" text="Dashboard" />
-                <NavItems src="https://ik.imagekit.io/efpqj5mis/LISTA/Nav/activities_CkrcAsu84.png?ik-sdk-version=javascript-1.4.3&updatedAt=1665153932627" text="Tasks" />
-                <NavItems src="https://ik.imagekit.io/efpqj5mis/LISTA/Nav/done_haguUW8l2.png?ik-sdk-version=javascript-1.4.3&updatedAt=1665153932321" text="Finished" />
-                <NavItems src="https://ik.imagekit.io/efpqj5mis/LISTA/Nav/help_8iHQFtaTd.png?ik-sdk-version=javascript-1.4.3&updatedAt=1665153932528" text="Help" />
-
-              </ul>
-            </div>
+            </ul>
           </div>
         </div>
-        <div className='main-section relative'>
+      </div>
+      <div className='main-section relative'>
 
 
-          {page.value === "dashboard" ? <Dashboard stats={statsLabel} status={done} list={active} /> :
-            page.value === "newtask" ? <NewTask /> :
-              page.value === "tasklist" ? <TaskList /> : null}
+        {page.value === "dashboard" ? <Dashboard stats={statsLabel} status={done} /> :
+          page.value === "newtask" ? <NewTask /> :
+            page.value === "tasklist" ? <TaskList /> : null}
 
 
-        </div>
-        <AnimatePresence>
-          {request.value ? confirm.value ? device === "phone" ? <PhonePop key="phonePop" /> : <DeskPop key="deskPop" /> : null : confirm.value ? device === "phone" ? <PhonePop key="phonePop" /> : <DeskPop key="deskPop" /> : null}
-          {taskAction.value !== '' ? <ConfirmPop /> : null}
+      </div>
+      <AnimatePresence>
+        {request.value ? confirm.value ? device === "phone" ? <PhonePop key="phonePop" /> : <DeskPop key="deskPop" /> : null : confirm.value ? device === "phone" ? <PhonePop key="phonePop" /> : <DeskPop key="deskPop" /> : null}
+        {taskAction.value !== '' ? <ConfirmPop /> : null}
 
-        </AnimatePresence>
+      </AnimatePresence>
 
-      </section>
+    </section>
 
-    </>
-  )
+  </>
+)
 }
 
 export default Hero

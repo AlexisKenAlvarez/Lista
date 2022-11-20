@@ -11,8 +11,6 @@ const Dashboard = (props) => {
     useEffect(()  => {
 
         console.log(task.value)
-        console.log(props.list)
-
 
     }, [])
 
