@@ -97,6 +97,7 @@ const Hero = () => {
       dispatch(setFinished({ value: data?.finishedTask }))
       setActive(data?.activeTask)
 
+      console.log(response)
       console.log(data)
       console.log(tasks)
 
