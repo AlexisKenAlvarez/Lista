@@ -28,7 +28,7 @@ const DetailedFinished = (props) => {
 
       <h2 className='task-deadline-finished-detailed ml-5'>Deadline: <span className='p-2 bg-[#22222E]'>{props.deadline}</span></h2>
 
-      <MdDelete size="1.7em" id={props.id} onClick={handleDelete} color="#d05261" className="ml-2 cursor-pointer"/>
+      <MdDelete size="1.7em" id={props.id} onClick={handleDelete} color="#d05261" className="ml-2 cursor-pointer task-delete-finished-detailed"/>
     </div>
   )
 }

@@ -1,13 +1,7 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
 const DashStats = (props) => {
-    useEffect(() => {
-      console.log(props)
     
-
-    }, [])
-    
-
     return (
         <div className='h-32 lg:h-36 xl:h-44 rounded-2xl relative' style={{backgroundColor: `${props.bg}`}}>
             <p className='text-sm text-white font-space text-center mt-2 px-2 absolute mx-auto left-0 right-0 md:text-md xl:text-lg'>{props.text}</p>

@@ -8,14 +8,15 @@ import RecentOld from './RecentOld'
 const Dashboard = (props) => {
     const task = useSelector((state) => state.TaskList.list)
     const stats = useSelector((state) => state.TaskList.stats)
-
+    const [tasks, setTasks] = useState([{
+        taskName: '',
+        deadline: ''
+    }])
 
     useEffect(() => {
+        setTasks(task.value)
 
-        console.log(task.value)
-        console.log(stats)
-
-    }, [])
+    }, [task])
 
     return (
         <>
@@ -31,8 +32,8 @@ const Dashboard = (props) => {
 
                 </div>
 
-                {/* <RecentOld task={task?.value[task?.value?.length - 1]?.taskName} date={task?.value[task?.value?.length - 1]?.deadline} title="Most recent task"/>
-        <RecentOld task={task?.value[0]?.taskName} date={task?.value[0]?.deadline} title="Oldest Task"/> */}
+                <RecentOld task={tasks[tasks.length - 1].taskName} date={tasks[tasks.length - 1].deadline} title="Most recent task"/>
+                <RecentOld task={tasks[0].taskName} date={tasks[0].deadline} title="Oldest Task"/>
 
             </div>
         </>

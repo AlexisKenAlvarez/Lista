@@ -39,11 +39,11 @@ const Simplified = (props) => {
       </div>
       <h2 className='task-deadline ml-5'>Deadline: <span className='p-2 bg-[#22222E]'>{props.deadline}</span></h2>
 
-      <MdDelete size="1.7em" id={props.id} onClick={handleDelete} color="#d05261" className="ml-2 cursor-pointer"/>
+      <MdDelete size="1.7em" id={props.id} onClick={handleDelete} color="#d05261" className="cursor-pointer task-delete mr-7"/>
 
       <div className='w-fit h-auto flex justify-center items-center border-2 border-bOutline p-3 px-3 task-done mr-5 cursor-pointer hover:bg-green-700 hover:border-green-700 transition-all ease-in-out' onClick={handleDone} id={props.id}>
         
-        <GoCheck size="1.2em" />
+        <GoCheck size="1.2em"/>
 
       </div>
     </div>
