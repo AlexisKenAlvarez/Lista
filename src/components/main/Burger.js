@@ -16,11 +16,12 @@ import SideNavList from './SideNavList'
 
 
 const Burger = () => {
+    Axios.defaults.withCredentials = true
+
     const [navList, setList] = useState(["Dashboard", "Tasks", "Finished", "Help"])
     const dispatch = useDispatch()
     const slide = useSelector((state) => state.handlePage.slide)
     const navigate = useNavigate()
-    Axios.defaults.withCredentials = true
 
     const toggleNav = () => {
         dispatch(setSlide({ value: !slide.value }))
