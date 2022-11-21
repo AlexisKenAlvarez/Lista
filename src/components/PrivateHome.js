@@ -106,14 +106,14 @@ export const PrivateHome = () => {
             } else {
                 setLog(false)
 
-                navigate("/", { replace: false })
+                navigate("/", { replace: true })
 
             }
         })
 
-        Axios.get(`${process.env.REACT_APP_BASEURL}/tasks`).then((response) => {
-            console.log(response)
-        })
+        // Axios.get(`${process.env.REACT_APP_BASEURL}/tasks`).then((response) => {
+        //     console.log(response)
+        // })
 
     }, [])
 
