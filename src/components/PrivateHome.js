@@ -100,7 +100,7 @@ export const PrivateHome = () => {
         Axios.get(`${process.env.REACT_APP_BASEURL}/login`).then((response) => {
             console.log("TEST LOGIN")
             console.log(response)
-            if (response.data?.loggedIn) {
+            if (response.data.loggedIn) {
                 setLog(true)
 
             } else {
