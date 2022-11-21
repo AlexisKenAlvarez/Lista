@@ -15,13 +15,10 @@ const NewTaskButton = () => {
   
   const task = useSelector((state) => state.NewTask)
   const [taskName, taskSubject, deadline] = [task.taskName.value, task.taskSubject.value, task.deadline.value]
-  const [taskNameValid, taskSubjectValid, taskDeadlineValid] = [task.taskNameValid.value, task.taskSubjectValid.value, task.deadlineValid.value]
-
 
   const [nameValid, setName] = useState(false)
   const [subjectValid, setSubject] = useState(false)
   const [deadlineValid, setDeadline] = useState(false)
-
 
   useEffect(() => {
     if (taskName !== '') {
