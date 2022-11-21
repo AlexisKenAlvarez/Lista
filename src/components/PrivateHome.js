@@ -60,6 +60,8 @@ export const PrivateHome = () => {
                             bg: "#AE68E6",
                         }] }))
 
+                        setLog(true)
+
                 })
 
             } else {
