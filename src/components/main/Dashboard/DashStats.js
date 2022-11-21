@@ -1,6 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 const DashStats = (props) => {
+    useEffect(() => {
+      console.log(props)
+    
+
+    }, [])
+    
 
     return (
         <div className='h-32 lg:h-36 xl:h-44 rounded-2xl relative' style={{backgroundColor: `${props.bg}`}}>
