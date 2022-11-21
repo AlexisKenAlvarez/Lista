@@ -16,9 +16,6 @@ export const PrivateHome = () => {
     const navigate = useNavigate()
 
     const [loggedIn, setLog] = useState(false)
-    const [taskStatus, setStatus] = useState(false)
-
-    const [active, setActive] = useState(0)
 
     const request = useSelector((state) => state.NewTask.request)
     const toggleUpdate = useSelector((state) => state.TaskList.toggleUpdate)
@@ -49,8 +46,8 @@ export const PrivateHome = () => {
         }
     }, [])
 
-    useEffect(() => {
-        console.log("LOGGED IN REQUEST")
+
+    const taskRequest = () => {
         Axios.get(`${process.env.REACT_APP_BASEURL}/tasks`).then((response) => {
             const data = response.data.userData
             console.log(response)
@@ -59,9 +56,6 @@ export const PrivateHome = () => {
             const active = response.data.userData.activeTask
 
             const finished = response.data.userData.finishedTask
-            setActive(data.activeTask.length)
-            setFinished(data.finishedTask.length)
-
 
             if (active.length > 0) {
                 dispatch(setList({ value: response.data.userData.activeTask }))
@@ -94,12 +88,17 @@ export const PrivateHome = () => {
                     }]
             }))
 
-            setStatus(true)
-
 
         })
+    }
 
+    useEffect(() => {
+      if (loggedIn) {
+        taskRequest()
+      }
+    
     }, [request, toggleUpdate])
+    
 
     useEffect(() => {
         Axios.get(`${process.env.REACT_APP_BASEURL}/login`).then((response) => {
@@ -107,6 +106,7 @@ export const PrivateHome = () => {
             console.log(response)
             if (response.data?.loggedIn) {
 
+                taskRequest()
                 setLog(true)
 
             } else {
@@ -119,7 +119,7 @@ export const PrivateHome = () => {
 
     }, [])
 
-    if (!loggedIn && !taskStatus) {
+    if (!loggedIn) {
         return (
             <AnimatePresence>
                 <Loader />
@@ -128,6 +128,6 @@ export const PrivateHome = () => {
     }
 
     return (
-        <Hero active={active} />
+        <Hero />
     )
 }
