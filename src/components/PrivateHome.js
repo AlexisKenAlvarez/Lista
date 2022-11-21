@@ -6,7 +6,7 @@ import Axios from 'axios'
 // COMPONENTS
 import Loader from './loader/Loader'
 import Hero from './main/hero'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { setList, setFinished, setStats } from '../features/taskList'
 
 export const PrivateHome = () => {
@@ -20,51 +20,58 @@ export const PrivateHome = () => {
     const [active, setActive] = useState(0)
     const [statLabel, setStatLabel] = useState()
 
+    const request = useSelector((state) => state.NewTask.request)
+    const toggleUpdate = useSelector((state) => state.TaskList.toggleUpdate)
+
+    const taskRequest = () => {
+        Axios.get(`${process.env.REACT_APP_BASEURL}/tasks`).then((response) => {
+            const data = response.data.userData
+            const active = response.data.userData.activeTask
+            const finished = response.data.userData.finishedTask
+            setActive(data.activeTask.length)
+            setFinished(data.finishedTask.length)
+
+            // PUT LIST OF DATA INTO REDUX STATE
+            if (finished.length > 0) {
+                dispatch(setFinished({ value: response.data.userData.finishedTask }))
+            }
+
+            if (active.length > 0) {
+                dispatch(setList({ value: response.data.userData.activeTask }))
+            }
+
+            // FOR DASHBOARD
+            dispatch(setStats({
+                value: [
+                    {
+                        text: "Active Tasks",
+                        value: response.data.userData.activeTask.length,
+                        bg: "#FC76A1",
+                    },
+                    {
+                        text: "Finished Tasks",
+                        value: response.data.userData.finishedTask.length,
+                        bg: "#70C4BF",
+                    },
+                    {
+                        text: "User Level",
+                        value: Math.floor(response.data.userData.finishedTask.length / 5),
+                        bg: "#AE68E6",
+                    }]
+            }))
+
+
+        })
+    }
+
     useEffect(() => {
         Axios.get(`${process.env.REACT_APP_BASEURL}/login`).then((response) => {
             console.log("TEST LOGIN")
             console.log(response)
             if (response.data?.loggedIn) {
 
-                Axios.get(`${process.env.REACT_APP_BASEURL}/tasks`).then((response) => {
-                    const data = response.data.userData
-                    const active = response.data.userData.activeTask
-                    const finished = response.data.userData.finishedTask
-                    setActive(data.activeTask.length)
-                    setFinished(data.finishedTask.length)
-
-                    // PUT LIST OF DATA INTO REDUX STATE
-                    if (finished.length > 0) {
-                        dispatch(setFinished({ value: response.data.userData.finishedTask }))
-                    }
-
-                    if (active.length > 0) {
-                        dispatch(setList({ value: response.data.userData.activeTask }))
-                    }
-
-                    // FOR DASHBOARD
-                    dispatch(setStats({
-                        value: [
-                            {
-                                text: "Active Tasks",
-                                value: response.data.userData.activeTask.length,
-                                bg: "#FC76A1",
-                            },
-                            {
-                                text: "Finished Tasks",
-                                value: response.data.userData.finishedTask.length,
-                                bg: "#70C4BF",
-                            },
-                            {
-                                text: "User Level",
-                                value: Math.floor(response.data.userData.finishedTask.length / 5),
-                                bg: "#AE68E6",
-                            }]
-                    }))
-
-                    setLog(true)
-
-                })
+                taskRequest()
+                setLog(true)
 
             } else {
                 setLog(false)
@@ -75,6 +82,15 @@ export const PrivateHome = () => {
         })
 
     }, [])
+
+    useEffect(() => {
+      if (loggedIn) {
+        console.log("LOGGED IN REQUEST")
+        taskRequest()
+      }
+    
+    }, [request, toggleUpdate])
+    
 
 
 

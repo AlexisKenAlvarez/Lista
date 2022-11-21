@@ -27,11 +27,11 @@ const Hero = (props) => {
   const [done, setDone] = useState(false)
   const [statsLabel, setStatLabel] = useState([])
   const confirm = useSelector((state) => state.NewTask.confirmed)
-  const request = useSelector((state) => state.NewTask.request)
   const [deviceWidth, setDeviceWidth] = useState(window.innerWidth)
   const [device, setDevice] = useState('')
   const dispatch = useDispatch()
 
+  const request = useSelector((state) => state.NewTask.request)
   const toggleUpdate = useSelector((state) => state.TaskList.toggleUpdate)
   const task = useSelector((state) => state.TaskList.list)
 
@@ -40,42 +40,10 @@ const Hero = (props) => {
   const page = useSelector((state) => state.handlePage.page)
   const taskAction = useSelector((state) => state.TaskList.action)
 
-
-  useEffect(() => {
-
-    if (deviceWidth <= 1023) {
-      setDevice("phone")
-    } else {
-      setDevice("desktop")
-    }
-
-  }, [])
-
-
-  // useEffect(() => {
-  //   const resizeW = () => setDeviceWidth(window.innerWidth)
-
-  //   window.addEventListener("resize", resizeW)
-
-  //   if (deviceWidth <= 1023) {
-  //     setDevice("phone")
-  //   } else {
-  //     setDevice("desktop")
-  //   }
-
-  //   return () => {
-  //     window.removeEventListener("resize", resizeW)
-  //     setDone(false)
-  //   }
-  // }, [deviceWidth])
-
   useEffect(() => {
     console.log(props.active)
     console.log(props.finished)
     console.log(page.value)
-
-
-
 
   }, [request, toggleUpdate])
 
