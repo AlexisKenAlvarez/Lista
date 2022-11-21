@@ -1,10 +1,9 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 
-// IMAGES
-import Info from '../../../images/info.svg'
-import Trash from '../../../images/trash.svg'
-import Check from '../../../images/check.svg'
+// REACT ICONS
+import { GoCheck } from 'react-icons/go'
+import { MdDelete } from 'react-icons/md'
 
 import { setDeleteId, setDeleteAction } from '../../../features/taskList'
 
@@ -40,10 +39,10 @@ const Detailed = (props) => {
 
       <h2 className='task-deadline-detailed ml-5'>Deadline: <span className='p-2 bg-[#22222E]'>{props.deadline}</span></h2>
 
-      <img src={Trash} alt="Trash" className='w-6 task-delete-detailaed ml-3 cursor-pointer' id={props.id} onClick={handleDelete}></img>
+      <MdDelete size="1.7em" id={props.id} onClick={handleDelete} color="#d05261" className="ml-2 cursor-pointer"/>
 
       <div className='w-fit h-auto flex justify-center items-center border-2 border-bOutline p-3 px-6 task-done-detailed mr-5 cursor-pointer hover:bg-green-700 hover:border-green-700 transition-all ease-in-out' id={props.id} onClick={handleDone}>
-        <img src={Check} alt="Check" className='w-4 h-4'></img>
+        <GoCheck size="1.2em" />
         <h2 className='ml-2'>Done</h2>
       </div>
     </div>

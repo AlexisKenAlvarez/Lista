@@ -40,13 +40,6 @@ const Hero = (props) => {
   const page = useSelector((state) => state.handlePage.page)
   const taskAction = useSelector((state) => state.TaskList.action)
 
-  useEffect(() => {
-    console.log(props.active)
-    console.log(props.finished)
-    console.log(page.value)
-
-  }, [request, toggleUpdate])
-
   return (
     <>
       <section className='hero-wrapper h-screen w-full bg-[#15151C]'>

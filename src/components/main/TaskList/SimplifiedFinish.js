@@ -1,5 +1,8 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
+
+// REACT ICONS
+import { MdDelete } from 'react-icons/md'
 
 import { toDelete, setDeleteId, setDeleteAction } from '../../../features/taskList'
 
@@ -15,6 +18,12 @@ const SimplifiedFinish = (props) => {
 
   }
 
+  useEffect(() => {
+    console.log(props)
+  
+  }, [])
+  
+
   return (
     <div className='bg-side w-full h-auto mt-7 border-l-4 border-barney rounded text-white font-poppins task-list-finished py-6'>
       <div className='flex task-name-finished ml-5'>
@@ -22,7 +31,8 @@ const SimplifiedFinish = (props) => {
         <h2 className='ml-3'>Task: <span className='opacity-50'>{props.task}</span></h2>
       </div>
       <h2 className='task-deadline-finished ml-5'>Deadline: <span className='p-2 bg-[#22222E]'>{props.deadline}</span></h2>
-      <img src="https://ik.imagekit.io/efpqj5mis/LISTA/trash_Yc0oPhy55.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1667631138211" alt="Trash" className='w-5 task-delete-finished mr-8 cursor-pointer' id={props.id} onClick={handleDelete}></img>
+
+      <MdDelete size="1.7em" id={props.id} onClick={handleDelete} color="#d05261" className="ml-2 cursor-pointer"/>
 
     </div>
   )

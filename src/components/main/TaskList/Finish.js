@@ -38,10 +38,11 @@ const Finish = () => {
         const endOffset = offset + itemsPerPage
         setPageCount(Math.ceil(tempTask.length / 6))
         setTaskSlice(tempTask.slice(offset, endOffset))
+        console.log(tempTask)
 
     }, [tempTask, offset])
 
-    if (listData.value.length === 0) {
+    if (listData.value[0]?.taskName === '' || listData.value.length === 0) {
         return (
             <div className='text-white font-space mx-auto w-full text-center mt-20'>
                 <h2 className='text-lg'>

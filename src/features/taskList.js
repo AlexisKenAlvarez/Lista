@@ -60,7 +60,8 @@ export const taskListSlice = createSlice({
             state.list = action.payload
         },
         setFinished: (state, action) => {
-            state.finished = action.payload
+            const newFinished = action.payload
+            state.finished = newFinished
         },
         toDelete: (state, action) => {
             // Construct a new result array immutably and return it

@@ -16,12 +16,34 @@ export const PrivateHome = () => {
     const navigate = useNavigate()
 
     const [loggedIn, setLog] = useState(false)
-    const [finished, setFinished] = useState(0)
     const [active, setActive] = useState(0)
     const [statLabel, setStatLabel] = useState()
 
     const request = useSelector((state) => state.NewTask.request)
     const toggleUpdate = useSelector((state) => state.TaskList.toggleUpdate)
+
+    useEffect(() => {
+
+    
+      return () => {
+        dispatch(setList({ value: [{
+            taskName: '',
+            taskSubject: '',
+            deadline: '',
+            status: '',
+            dateCreated: ''
+        }]}))
+
+        dispatch(setFinished({ value: [{
+            taskName: '',
+            taskSubject: '',
+            deadline: '',
+            status: '',
+            dateCreated: ''
+        }]}))
+      }
+    }, [])
+    
 
     const taskRequest = () => {
         Axios.get(`${process.env.REACT_APP_BASEURL}/tasks`).then((response) => {
@@ -31,14 +53,17 @@ export const PrivateHome = () => {
             setActive(data.activeTask.length)
             setFinished(data.finishedTask.length)
 
-            // PUT LIST OF DATA INTO REDUX STATE
-            if (finished.length > 0) {
-                dispatch(setFinished({ value: response.data.userData.finishedTask }))
-            }
-
+            
             if (active.length > 0) {
                 dispatch(setList({ value: response.data.userData.activeTask }))
             }
+
+            // PUT LIST OF DATA INTO REDUX STATE
+            if (finished.length > 0) {
+                console.log(response.data.userData.finishedTask)
+                dispatch(setFinished({ value: response.data.userData.finishedTask }))
+            }
+
 
             // FOR DASHBOARD
             dispatch(setStats({
@@ -104,6 +129,6 @@ export const PrivateHome = () => {
     }
 
     return (
-        <Hero finished={finished} active={active} />
+        <Hero active={active} />
     )
 }

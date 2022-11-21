@@ -3,6 +3,9 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import { toDelete, setDeleteId, setDeleteAction } from '../../../features/taskList'
 
+// REACT ICONS
+import { MdDelete } from 'react-icons/md'
+
 const DetailedFinished = (props) => {
   const dispatch = useDispatch()
 
@@ -25,7 +28,7 @@ const DetailedFinished = (props) => {
 
       <h2 className='task-deadline-finished-detailed ml-5'>Deadline: <span className='p-2 bg-[#22222E]'>{props.deadline}</span></h2>
 
-      <img src="https://ik.imagekit.io/efpqj5mis/LISTA/trash_Yc0oPhy55.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1667631138211" alt="Trash" className='w-6 task-delete-finished-detailed ml-3 cursor-pointer' id={props.id} onClick={handleDelete}></img>
+      <MdDelete size="1.7em" id={props.id} onClick={handleDelete} color="#d05261" className="ml-2 cursor-pointer"/>
     </div>
   )
 }

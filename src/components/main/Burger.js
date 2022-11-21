@@ -6,8 +6,10 @@ import { useNavigate } from 'react-router-dom'
 import { setSlide } from '../../features/heroPage'
 
 // IMAGES
-import BurgerImage from '../../images/burger.svg'
 import BackButton from '../../images/back-button.svg'
+
+// React Icons
+import { BiMenu } from "react-icons/bi";
 
 // COMPONENTS
 import SideNavList from './SideNavList'
@@ -34,7 +36,7 @@ const Burger = () => {
     
     return (
         <>
-            <img src={BurgerImage} alt="Menu" className='lg:hidden cursor-pointer' onClick={toggleNav}></img>
+            <BiMenu color="white" fontSize="3rem" style={{cursor: "pointer"}} className="lg:hidden" onClick={toggleNav} />
 
             <div className='absolute top-0 left-0 h-screen w-full navhalf:w-[14rem] lg:hidden transition-all ease-in-out bg-purpletrans z-50'
             style={slide.value ? {transform: "translateX(0%)"} : {transform: "translateX(-100%)", transitionDelay: "500ms"}}></div>
