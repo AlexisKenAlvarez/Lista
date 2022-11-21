@@ -15,8 +15,7 @@ const Dashboard = (props) => {
 
     useEffect(() => {
         setTasks(task.value)
-        console.log(tasks)
-        console.log(tasks[tasks.length - 1])
+
     }, [task])
 
     return (
@@ -33,8 +32,8 @@ const Dashboard = (props) => {
 
                 </div>
 
-                <RecentOld task={tasks[tasks.length - 1].taskName} date={tasks[tasks.length - 1].deadline} title="Most recent task"/>
-                <RecentOld task={tasks[0].taskName} date={tasks[0].deadline} title="Oldest Task"/>
+                <RecentOld task={tasks[tasks.length - 1]?.taskName} date={tasks[tasks.length - 1]?.deadline} title="Most recent task"/>
+                <RecentOld task={tasks[0]?.taskName} date={tasks[0]?.deadline} title="Oldest Task"/>
 
             </div>
         </>
