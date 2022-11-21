@@ -45,8 +45,8 @@ export const PrivateHome = () => {
     }, [])
     
 
-    const taskRequest = async () => {
-        await Axios.get(`${process.env.REACT_APP_BASEURL}/tasks`).then((response) => {
+    const taskRequest = () => {
+        Axios.get(`${process.env.REACT_APP_BASEURL}/tasks`).then((response) => {
             const data = response.data.userData
             console.log(response)
             console.log(response.data.userData)
@@ -115,7 +115,51 @@ export const PrivateHome = () => {
     useEffect(() =>{
       if (loggedIn) {
         console.log("LOGGED IN REQUEST")
-        taskRequest()
+        Axios.get(`${process.env.REACT_APP_BASEURL}/tasks`).then((response) => {
+            const data = response.data.userData
+            console.log(response)
+            console.log(response.data.userData)
+            console.log(response.data.userData?.activeTask)
+            const active = response.data.userData.activeTask
+
+            const finished = response.data.userData.finishedTask
+            setActive(data.activeTask.length)
+            setFinished(data.finishedTask.length)
+
+            
+            if (active.length > 0) {
+                dispatch(setList({ value: response.data.userData.activeTask }))
+            }
+
+            // PUT LIST OF DATA INTO REDUX STATE
+            if (finished.length > 0) {
+                console.log(response.data.userData.finishedTask)
+                dispatch(setFinished({ value: response.data.userData.finishedTask }))
+            }
+
+
+            // FOR DASHBOARD
+            dispatch(setStats({
+                value: [
+                    {
+                        text: "Active Tasks",
+                        value: response.data.userData.activeTask.length,
+                        bg: "#FC76A1",
+                    },
+                    {
+                        text: "Finished Tasks",
+                        value: response.data.userData.finishedTask.length,
+                        bg: "#70C4BF",
+                    },
+                    {
+                        text: "User Level",
+                        value: Math.floor(response.data.userData.finishedTask.length / 5),
+                        bg: "#AE68E6",
+                    }]
+            }))
+
+
+        })
       }
     
     }, [request, toggleUpdate])
