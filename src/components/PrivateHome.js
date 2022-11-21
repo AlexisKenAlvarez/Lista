@@ -45,8 +45,8 @@ export const PrivateHome = () => {
     }, [])
     
 
-    const taskRequest = () => {
-        Axios.get(`${process.env.REACT_APP_BASEURL}/tasks`).then((response) => {
+    const taskRequest = async () => {
+        await Axios.get(`${process.env.REACT_APP_BASEURL}/tasks`).then((response) => {
             const data = response.data.userData
             console.log(response)
             console.log(response.data.userData)
@@ -112,7 +112,7 @@ export const PrivateHome = () => {
 
     }, [])
 
-    useEffect(() => {
+    useEffect(() =>{
       if (loggedIn) {
         console.log("LOGGED IN REQUEST")
         taskRequest()
