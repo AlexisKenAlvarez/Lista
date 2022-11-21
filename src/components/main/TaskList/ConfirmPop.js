@@ -12,7 +12,6 @@ const ConfirmPop = () => {
 
     const task = useSelector((state) => state.TaskList)
     const dispatch = useDispatch()
-    const listData = useSelector((state) => state.TaskList.list)
     const from = useSelector((state) => state.TaskList.deleteFrom)
     const toggleUpdate = useSelector((state) => state.TaskList.toggleUpdate)
 
