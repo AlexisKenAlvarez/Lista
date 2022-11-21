@@ -111,9 +111,9 @@ export const PrivateHome = () => {
             }
         })
 
-        // Axios.get(`${process.env.REACT_APP_BASEURL}/tasks`).then((response) => {
-        //     console.log(response)
-        // })
+        Axios.get(`${process.env.REACT_APP_BASEURL}/tasks`).then((response) => {
+            console.log(response)
+        })
 
     }, [])
 
