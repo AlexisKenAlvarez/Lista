@@ -49,6 +49,8 @@ export const PrivateHome = () => {
         Axios.get(`${process.env.REACT_APP_BASEURL}/tasks`).then((response) => {
             const data = response.data.userData
             const active = response.data.userData.activeTask
+            console.log(response.data.userData)
+            console.log(response.data.userData?.activeTask)
             const finished = response.data.userData.finishedTask
             setActive(data.activeTask.length)
             setFinished(data.finishedTask.length)
