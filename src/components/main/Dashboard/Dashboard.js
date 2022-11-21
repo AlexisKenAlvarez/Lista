@@ -15,7 +15,8 @@ const Dashboard = (props) => {
 
     useEffect(() => {
         setTasks(task.value)
-
+        console.log(tasks)
+        console.log(tasks[tasks.length - 1])
     }, [task])
 
     return (
