@@ -19,12 +19,6 @@ export const PrivateHome = () => {
     const [finished, setFinished] = useState(0)
     const [active, setActive] = useState(0)
     const [statLabel, setStatLabel] = useState()
-
-    useEffect(() => {
-      dispatch(setStats({ value: statLabel }))
-      console.log(statLabel)
-    
-    }, [statLabel])
     
     useEffect(() => {
         Axios.get(`${process.env.REACT_APP_BASEURL}/login`).then((response) => {
@@ -49,7 +43,7 @@ export const PrivateHome = () => {
                     }
 
                     // FOR DASHBOARD
-                    setStatLabel([
+                    dispatch(setStats({ value: [
                         {
                             text: "Active Tasks",
                             value: response.data.userData.activeTask.length,
@@ -64,10 +58,7 @@ export const PrivateHome = () => {
                             text: "User Level",
                             value: Math.floor(response.data.userData.finishedTask.length / 5),
                             bg: "#AE68E6",
-                        }]
-                    )
-
-                    setLog(true)
+                        }] }))
 
                 })
 
