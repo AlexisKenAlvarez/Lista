@@ -19,7 +19,7 @@ export const PrivateHome = () => {
     const [finished, setFinished] = useState(0)
     const [active, setActive] = useState(0)
     const [statLabel, setStatLabel] = useState()
-    
+
     useEffect(() => {
         Axios.get(`${process.env.REACT_APP_BASEURL}/login`).then((response) => {
             console.log("TEST LOGIN")
@@ -43,24 +43,26 @@ export const PrivateHome = () => {
                     }
 
                     // FOR DASHBOARD
-                    dispatch(setStats({ value: [
-                        {
-                            text: "Active Tasks",
-                            value: response.data.userData.activeTask.length,
-                            bg: "#FC76A1",
-                        },
-                        {
-                            text: "Finished Tasks",
-                            value: response.data.userData.finishedTask.length,
-                            bg: "#70C4BF",
-                        },
-                        {
-                            text: "User Level",
-                            value: Math.floor(response.data.userData.finishedTask.length / 5),
-                            bg: "#AE68E6",
-                        }] }))
+                    dispatch(setStats({
+                        value: [
+                            {
+                                text: "Active Tasks",
+                                value: response.data.userData.activeTask.length,
+                                bg: "#FC76A1",
+                            },
+                            {
+                                text: "Finished Tasks",
+                                value: response.data.userData.finishedTask.length,
+                                bg: "#70C4BF",
+                            },
+                            {
+                                text: "User Level",
+                                value: Math.floor(response.data.userData.finishedTask.length / 5),
+                                bg: "#AE68E6",
+                            }]
+                    }))
 
-                        setLog(true)
+                    setLog(true)
 
                 })
 
