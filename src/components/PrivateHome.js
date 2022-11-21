@@ -106,7 +106,7 @@ export const PrivateHome = () => {
             } else {
                 setLog(false)
 
-                navigate("/", { replace: true })
+                navigate("/", { replace: false })
 
             }
         })
