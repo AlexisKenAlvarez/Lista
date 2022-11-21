@@ -73,6 +73,8 @@ const Login = () => {
 
     useEffect(() => {
 
+        console.log("ON LOGIN START")
+
         if (userEmail.value !== '') {
             seteValid(true)
         } else {
@@ -86,6 +88,7 @@ const Login = () => {
         }
 
         Axios.get(`${process.env.REACT_APP_BASEURL}/login`).then((response) => {
+            console.log("ON LOGIN AXIOS")
             if (response.data.loggedIn) {
               navigate("/home", {replace: true})
             }
