@@ -25,8 +25,7 @@ import ConfirmPop from './TaskList/ConfirmPop'
 
 const Hero = (props) => {
   Axios.defaults.withCredentials = true
-
-  const [done, setDone] = useState(false)
+  
   const [statsLabel, setStatLabel] = useState([])
   const confirm = useSelector((state) => state.NewTask.confirmed)
   const [deviceWidth, setDeviceWidth] = useState(window.innerWidth)
