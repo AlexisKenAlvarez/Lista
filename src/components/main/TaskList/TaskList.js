@@ -23,7 +23,6 @@ const TaskList = () => {
     const dispatch = useDispatch()
     const taskList = useSelector((state) => state.TaskList.view)
     const listData = useSelector((state) => state.TaskList.list)
-    const [taskSlice, setTaskSlice] = useState([])
     const topRef = useRef(null)
     
     const [offset, setOffset] = useState(0)
