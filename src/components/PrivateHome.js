@@ -93,7 +93,7 @@ export const PrivateHome = () => {
         })
 
 
-    }, [])
+    }, [request, toggleUpdate])
 
 
     useEffect(() => {
