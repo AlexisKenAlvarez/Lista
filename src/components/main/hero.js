@@ -25,7 +25,7 @@ import ConfirmPop from './TaskList/ConfirmPop'
 
 const Hero = (props) => {
   Axios.defaults.withCredentials = true
-  
+
   const [statsLabel, setStatLabel] = useState([])
   const confirm = useSelector((state) => state.NewTask.confirmed)
   const [deviceWidth, setDeviceWidth] = useState(window.innerWidth)
@@ -42,7 +42,7 @@ const Hero = (props) => {
 
   return (
     <>
-      <section className='hero-wrapper h-screen w-full bg-[#15151C]'>
+      {/* <section className='hero-wrapper h-screen w-full bg-[#15151C]'>
         <div className='navbar-up bg-side flex items-center justify-center'>
           <NavbarUp />
         </div>
@@ -75,7 +75,9 @@ const Hero = (props) => {
 
         </AnimatePresence>
 
-      </section>
+      </section> */}
+
+      <h1 className='text-white'>HELLO</h1>
 
     </>
   )
